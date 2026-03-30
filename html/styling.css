@@ -1,0 +1,48 @@
+  body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: lightgray;
+}
+  
+  header{
+    
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 5px;
+  }
+  
+  form {
+    width: 300px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid black;
+    background-color: white;
+  }
+
+  input {
+    display: block;
+    margin-bottom: 10px;
+    padding: 5px;
+  }
+
+  label {
+    font-weight: bold;
+    color: brown;
+  }
+
+  button {
+    
+    background-color: blue;
+    color: white;
+    padding: 5px 18px;
+  }
+}
+
+button:hover {
+  background-color: darkblue;
+}
