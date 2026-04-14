@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup | Form AI Auth</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["'Plus Jakarta Sans'", "sans-serif"],
+            },
+            colors: {
+              ink: "#111827",
+              brand: "#b45309",
+              deep: "#1f2937",
+            },
+            boxShadow: {
+              soft: "0 24px 60px rgba(17, 24, 39, 0.12)",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body class="min-h-screen text-ink">
+    <main class="mx-auto flex min-h-screen max-w-7xl items-center px-4 py-10 sm:px-6 lg:px-8">
+      <section class="grid w-full gap-8 lg:grid-cols-[0.92fr_1.08fr]">
+        <div class="glass-panel order-2 rounded-[2rem] border border-white/70 p-6 shadow-soft sm:p-8 lg:order-1">
+          <div class="mx-auto max-w-md">
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-brand">Signup</p>
+            <h1 class="mt-2 text-3xl font-bold">Create your account</h1>
+            <p class="mt-3 text-sm leading-6 text-slate-600">
+              Start with a secure account and get instant access after registration.
+            </p>
+
+            <div id="signupMessage" class="mt-6 hidden"></div>
+
+            <form id="signupForm" class="mt-6 space-y-5" novalidate>
+              <div>
+                <label for="name" class="mb-2 block text-sm font-semibold text-slate-700">Full name</label>
+                <input id="name" name="name" type="text" class="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-amber-500 focus:ring-4 focus:ring-amber-100" placeholder="Jane Doe" required />
+              </div>
+              <div>
+                <label for="email" class="mb-2 block text-sm font-semibold text-slate-700">Email</label>
+                <input id="email" name="email" type="email" class="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-amber-500 focus:ring-4 focus:ring-amber-100" placeholder="jane@example.com" required />
+              </div>
+              <div>
+                <label for="password" class="mb-2 block text-sm font-semibold text-slate-700">Password</label>
+                <input id="password" name="password" type="password" class="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-amber-500 focus:ring-4 focus:ring-amber-100" placeholder="Minimum 6 chars and 1 special character" required />
+              </div>
+              <div>
+                <label for="confirmPassword" class="mb-2 block text-sm font-semibold text-slate-700">Confirm password</label>
+                <input id="confirmPassword" name="confirmPassword" type="password" class="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-amber-500 focus:ring-4 focus:ring-amber-100" placeholder="Repeat your password" required />
+              </div>
+              <button id="signupButton" type="submit" class="w-full rounded-2xl bg-amber-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-amber-700">Create Account</button>
+            </form>
+
+            <p class="mt-8 text-center text-sm text-slate-600">
+              Already have an account?
+              <a href="/login" class="font-semibold text-brand transition hover:text-amber-700">Sign in</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="order-1 flex flex-col justify-center rounded-[2rem] border border-amber-200/60 bg-gradient-to-br from-amber-50 via-orange-50 to-white px-8 py-10 shadow-soft sm:px-10 lg:order-2">
+          <div class="max-w-xl">
+            <span class="inline-flex rounded-full border border-amber-200 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-amber-700">Modern Signup</span>
+            <h2 class="mt-6 text-4xl font-extrabold leading-tight text-deep sm:text-5xl">Build access with strong validation from the first click.</h2>
+            <p class="mt-4 max-w-lg text-base leading-7 text-slate-600 sm:text-lg">
+              The UI checks for valid email, password strength, and confirmation before your request reaches the backend.
+            </p>
+            <div class="mt-8 grid gap-4 sm:grid-cols-3">
+              <div class="rounded-2xl border border-amber-100 bg-white/80 p-4">
+                <p class="text-sm font-semibold text-amber-700">Clean inputs</p>
+                <p class="mt-2 text-sm text-slate-600">Minimal layout with responsive spacing.</p>
+              </div>
+              <div class="rounded-2xl border border-amber-100 bg-white/80 p-4">
+                <p class="text-sm font-semibold text-amber-700">Safe passwords</p>
+                <p class="mt-2 text-sm text-slate-600">Client and server validations work together.</p>
+              </div>
+              <div class="rounded-2xl border border-amber-100 bg-white/80 p-4">
+                <p class="text-sm font-semibold text-amber-700">Fast access</p>
+                <p class="mt-2 text-sm text-slate-600">Successful signup flows directly into login.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+    <script>
+      redirectIfAuthenticated();
+
+      document.getElementById("signupForm").addEventListener("submit", async (event) => {
+        event.preventDefault();
+        showMessage("signupMessage", "", "error");
+
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
+
+        if (!name) {
+          showMessage("signupMessage", "Please enter your full name.", "error");
+          return;
+        }
+
+        if (!isValidEmail(email)) {
+          showMessage("signupMessage", "Please enter a valid email address.", "error");
+          return;
+        }
+
+        if (!isStrongPassword(password)) {
+          showMessage("signupMessage", "Password must be at least 6 characters and include one special character.", "error");
+          return;
+        }
+
+        if (password !== confirmPassword) {
+          showMessage("signupMessage", "Passwords do not match.", "error");
+          return;
+        }
+
+        setLoading("signupButton", true, "Create Account");
+        try {
+          await apiRequest("/auth/signup", {
+            method: "POST",
+            body: JSON.stringify({ name, email, password }),
+          });
+          showMessage("signupMessage", "Account created successfully. Redirecting to login...", "success");
+          window.setTimeout(() => {
+            window.location.href = "/login";
+          }, 700);
+        } catch (error) {
+          showMessage("signupMessage", error.message, "error");
+        } finally {
+          setLoading("signupButton", false, "Create Account");
+        }
+      });
+    </script>
+  </body>
+</html>
