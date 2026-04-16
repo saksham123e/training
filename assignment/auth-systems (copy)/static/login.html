@@ -161,12 +161,7 @@
             method: "POST",
             body: JSON.stringify({ email }),
           });
-          let message = data.message;
-          if (data.reset_link) {
-            const safeLink = escapeHtml(data.reset_link);
-            message += ` <a href="${safeLink}" class="font-semibold text-brand underline underline-offset-4" target="_blank" rel="noopener noreferrer">Open reset page</a>`;
-          }
-          showMessage("forgotMessage", message, "success");
+          showMessage("forgotMessage", data.message, "success");
         } catch (error) {
           showMessage("forgotMessage", error.message, "error");
         } finally {

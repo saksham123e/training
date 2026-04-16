@@ -13,27 +13,10 @@ class Settings(BaseSettings):
     email_port: int = Field(587, env="EMAIL_PORT")
     email_user: str = Field(..., env="EMAIL_USER")
     email_pass: str = Field(..., env="EMAIL_PASS")
-    email_from: str = Field("", env="EMAIL_FROM")
-    email_use_tls: bool = Field(True, env="EMAIL_USE_TLS")
-    email_use_ssl: bool = Field(False, env="EMAIL_USE_SSL")
-    email_timeout_seconds: int = Field(20, env="EMAIL_TIMEOUT_SECONDS")
 
     @property
     def email_pass_smtp(self) -> str:
         return self.email_pass.replace(" ", "").strip()
-
-    @property
-    def email_user_smtp(self) -> str:
-        return self.email_user.strip()
-
-    @property
-    def email_from_header(self) -> str:
-        sender = self.email_from.strip() or self.email_user_smtp
-        return "Form AI Auth <{email}>".format(email=sender)
-
-    @property
-    def email_from_address(self) -> str:
-        return (self.email_from.strip() or self.email_user_smtp).strip()
 
     class Config:
         env_file = ".env"

@@ -43,7 +43,6 @@ class ForgotPasswordRequest(BaseModel):
 
 class MessageResponse(BaseModel):
     message: str
-    reset_link: Optional[str] = None
 
 
 class ResetPasswordRequest(BaseModel):

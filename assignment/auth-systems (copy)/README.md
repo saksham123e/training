@@ -10,27 +10,19 @@ Full-stack authentication app built with FastAPI, PostgreSQL, SQLAlchemy, JWT, a
 make install
 ```
 
-2. Run the app:
+2. Start PostgreSQL:
 
 ```bash
-make run
+make db-up
 ```
 
-The default local setup uses SQLite, so it works without Docker.
-
-## Optional PostgreSQL setup
-
-If you want to use PostgreSQL instead of SQLite:
+3. Apply migrations:
 
 ```bash
-cp .env.example .env
-# then change DATABASE_URL in .env to:
-# postgresql+psycopg2://postgres:postgres@127.0.0.1:5432/form_ai_auth
-make db-up
 make migrate
 ```
 
-Then run the app:
+4. Run the app:
 
 ```bash
 make run
@@ -44,15 +36,19 @@ If you do not want to use `make`, you can run:
 
 ```bash
 python3 -m venv .venv
-.venv/bin/python -m pip install -r requirements.txt
-.venv/bin/python -m uvicorn app.main:app --reload
+.venv/bin/pip install -r requirements.txt
+docker compose up -d db
+.venv/bin/alembic upgrade head
+.venv/bin/uvicorn app.main:app --reload
 ```
 
-## Optional PostgreSQL credentials
+## Default local credentials
 
 - PostgreSQL database: `form_ai_auth`
 - PostgreSQL user: `postgres`
 - PostgreSQL password: `postgres`
+
+These values match the default `.env` and `docker-compose.yml`.
 
 ## Frontend pages
 

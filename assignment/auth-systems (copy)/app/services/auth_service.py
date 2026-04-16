@@ -73,9 +73,7 @@ class AuthService:
         return self.db.query(User).filter(User.id == user_id).first()
 
     def forgot_password(self, email: str) -> MessageResponse:
-        reset_link: Optional[str] = None
         user = self._get_user_by_email(email)
-        logger.info("forgot_password called for email=%s user_found=%s", email.lower(), bool(user))
         if user:
             reset_token = secrets.token_urlsafe(32)
             user.reset_token = reset_token
@@ -95,27 +93,21 @@ class AuthService:
                 token=reset_token,
             )
             try:
-                logger.info("Calling email service for password reset email=%s", user.email)
                 self.email_service.send_password_reset_email(
                     recipient_email=user.email,
                     recipient_name=user.name,
                     reset_link=reset_link,
                 )
-                logger.info("Password reset email send completed for email=%s", user.email)
             except RuntimeError:
-                logger.exception("Password reset email send failed for email=%s", user.email)
                 user.reset_token = None
                 user.reset_token_expiry = None
                 self.db.add(user)
                 self.db.commit()
                 raise
 
-        response = MessageResponse(
+        return MessageResponse(
             message="If an account exists for that email, reset instructions have been sent."
         )
-        if user and reset_link and settings.app_env.lower() == "development":
-            response.reset_link = reset_link
-        return response
 
     def reset_password(self, payload: ResetPasswordRequest) -> MessageResponse:
         user = self.db.query(User).filter(User.reset_token == payload.token).first()

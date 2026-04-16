@@ -20,15 +20,6 @@ function isStrongPassword(password) {
   return password.length >= 6 && /[^A-Za-z0-9]/.test(password);
 }
 
-function escapeHtml(value) {
-  return String(value)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
-}
-
 function showMessage(elementId, message, type) {
   const element = document.getElementById(elementId);
   if (!element) {
@@ -47,11 +38,7 @@ function showMessage(elementId, message, type) {
       : "border-rose-200 bg-rose-50 text-rose-700";
 
   element.className = "rounded-2xl border px-4 py-3 text-sm " + palette;
-  if (type === "success" && /<a[\s>]/i.test(message)) {
-    element.innerHTML = message;
-  } else {
-    element.textContent = message;
-  }
+  element.textContent = message;
 }
 
 function setLoading(buttonId, isLoading, label) {

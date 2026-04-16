@@ -1,7 +1,7 @@
 PYTHON := .venv/bin/python
-PIP := $(PYTHON) -m pip
-UVICORN := $(PYTHON) -m uvicorn
-ALEMBIC := $(PYTHON) -m alembic
+PIP := .venv/bin/pip
+UVICORN := .venv/bin/uvicorn
+ALEMBIC := .venv/bin/alembic
 
 .PHONY: install db-up db-down migrate run mail
 
@@ -10,10 +10,10 @@ install:
 	$(PIP) install -r requirements.txt
 
 db-up:
-	docker-compose up -d db
+	docker compose up -d db
 
 db-down:
-	docker-compose down
+	docker compose down
 
 migrate:
 	$(ALEMBIC) upgrade head
