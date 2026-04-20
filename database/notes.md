@@ -75,6 +75,64 @@ postgres-> JOIN orders ON customers.id = orders.customer_id;
  Rahul   | Watch        |  5000
 (3 rows)
 
-postgres=> 
+
+saksham=> CREATE TABLE users (
+saksham(>  id SERIAL PRIMARY KEY,
+saksham(>  name TEXT NOT NULL,
+saksham(>  email TEXT UNIQUE
+saksham(> );
+CREATE TABLE
+saksham=> INSERT INTO users (name, email)
+saksham-> VALUES
+saksham-> ('Saksham', 'saksham@gmail.com'),
+saksham-> ('Rahul ', 'rahul@g,ail.com'),
+saksham-> ('Aman', 'aman@gmail.com');
+INSERT 0 3
+saksham=> SELECT *FROM users;
+ id |  name   |       email       
+----+---------+-------------------
+  1 | Saksham | saksham@gmail.com
+  2 | Rahul   | rahul@g,ail.com
+  3 | Aman    | aman@gmail.com
+(3 rows)
+
+
+
+where query
+
+
+saksham_db=# SELECT * FROM users;
+ id |  name   | age |    city    
+----+---------+-----+------------
+  1 | Saksham |  21 | Delhi
+  2 | Rahul   |  25 | Mumbai
+  3 | Amit    |  19 | Delhi
+  4 | Simran  |  23 | Chandigarh
+  5 | Ankit   |  18 | Delhi
+(5 rows)
+
+saksham_db=# SELECT * FROM users
+saksham_db-# WHERE city = 'Delhi';
+ id |  name   | age | city  
+----+---------+-----+-------
+  1 | Saksham |  21 | Delhi
+  3 | Amit    |  19 | Delhi
+  5 | Ankit   |  18 | Delhi
+(3 rows)
+
+
+
+saksham_db=# SELECT * FROM users
+saksham_db-# WHERE age > 20;
+ id |  name   | age |    city    
+----+---------+-----+------------
+  1 | Saksham |  21 | Delhi
+  2 | Rahul   |  25 | Mumbai
+  4 | Simran  |  23 | Chandigarh
+(3 rows)
+
+saksham_db=# 
+
+
 
 
