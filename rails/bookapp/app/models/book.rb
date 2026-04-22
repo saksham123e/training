@@ -16,4 +16,10 @@ class Book < ApplicationRecord
   def set_default_author
     self.author = "Unknown" if author.blank?
   end
+
+  after_commit :log_after_commit
+
+  def log_after_commit
+    puts "Data successfully DB me save ho gaya ✅"
+  end
 end
