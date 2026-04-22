@@ -10,4 +10,10 @@ class Book < ApplicationRecord
   def capitalize_title
     self.title = title.split.map(&:capitalize).join(" ")
   end
+
+  before_validation :set_default_author
+
+  def set_default_author
+    self.author = "Unknown" if author.blank?
+  end
 end
