@@ -1,5 +1,7 @@
 class Book < ApplicationRecord
   belongs_to :user
+  has_many :reviews
+  has_many :reviewers, through: :reviews, source: :user
   validates :title, presence: true
   validates :author, presence: true
   validates :price, presence: true, numericality: { greater_than: 0 }
