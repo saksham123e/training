@@ -6,6 +6,27 @@ class BooksController < ApplicationController
     @books = Book.all
   end
 
+   def full_info
+    books = Book.includes(:user)
+
+    data = books.map do |b|
+      {
+        title: b.title,
+        user: b.user&.name
+      }
+    end
+
+    render json: data
+  end
+
+    def search
+    name = params[:name]
+
+    books = Book.where("title LIKE ?", "%#{name}%")
+
+    render json: books
+  end
+
   # GET /books/1 or /books/1.json
   def show
   end
@@ -67,4 +88,13 @@ class BooksController < ApplicationController
     def book_params
       params.expect(book: [ :title, :author, :price ])
     end
+end
+
+def test_data
+  books = Book.all
+
+  render json: {
+    total_books: books.count,
+    books: books
+  }
 end
