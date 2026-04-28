@@ -1,0 +1,31 @@
+<h1>Issued Books</h1>
+
+<%= link_to "Issue New Book", new_issue_path %>
+
+<table border="1">
+  <tr>
+    <th>User</th>
+    <th>Book</th>
+    <th>Issue Date</th>
+    <th>Return Date</th>
+    <th>Action</th>
+  </tr>
+
+  <% @issues.each do |issue| %>
+    <tr>
+      <td><%= issue.user.name %></td>
+      <td><%= issue.book.title %></td>
+      <td><%= issue.issue_date %></td>
+      <td><%= issue.return_date %></td>
+
+      <td>
+        <% if issue.return_date.nil? %>
+          <%= link_to "Return", return_book_issue_path(issue), method: :patch %>
+        <% else %>
+          Returned
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+
+</table>
