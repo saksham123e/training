@@ -1,5 +1,4 @@
 class IssuesController < ApplicationController
-
   def index
     @issues = Issue.all
   end
@@ -8,6 +7,10 @@ class IssuesController < ApplicationController
     @issue = Issue.new
     @users = User.all
     @books = Book.where(available: true)
+
+    if params[:book_id]
+      @selected_book = Book.find(params[:book_id])
+    end
   end
 
   def create

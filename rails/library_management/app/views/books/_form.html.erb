@@ -1,27 +1,18 @@
 <%= form_with model: @book do |f| %>
 
-  <p>
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </p>
+  <p>Title</p>
+  <%= f.text_field :title %>
 
-  <p>
-    <%= f.label :author %><br>
-    <%= f.text_field :author %>
-  </p>
+  <p>Author</p>
+  <%= f.text_field :author %>
 
-  <p>
-    <%= f.label :genre %><br>
-    <%= f.text_field :genre %>
-  </p>
+  <p>Genre</p>
+  <%= f.text_field :genre %>
 
-  <p>
-    <%= f.label :price %><br>
-    <%= f.number_field :price %>
-  </p>
+  <p>Price</p>
+  <%= f.number_field :price %>
 
-  <p>
-    <%= f.submit %>
-  </p>
+  <br>
+  <%= f.submit %>
 
 <% end %>

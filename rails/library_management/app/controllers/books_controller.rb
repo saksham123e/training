@@ -1,7 +1,10 @@
 class BooksController < ApplicationController
-
   def index
-    @books = Book.all
+    if params[:search]
+      @books = Book.where("title LIKE ?", "%#{params[:search]}%")
+    else
+      @books = Book.all
+    end
   end
 
   def show
@@ -14,6 +17,7 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
+    @book.available = true
 
     if @book.save
       redirect_to books_path

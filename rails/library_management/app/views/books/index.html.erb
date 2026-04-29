@@ -1,32 +1,48 @@
-<h1>Books</h1>
+<div class="container mt-5">
 
-<%= link_to "Add Book", new_book_path, class: "btn btn-primary" %>
+  <h1 class="mb-4">📚 Books</h1>
 
-<table border="1" cellpadding="10">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Author</th>
-      <th>Genre</th>
-      <th>Price</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
+  <%= form_with url: books_path, method: :get, class: "mb-3" do |f| %>
+    <%= f.text_field :search, placeholder: "Search books...", class: "form-control d-inline w-50" %>
+    <%= f.submit "Search", class: "btn btn-primary" %>
+  <% end %>
 
-  <tbody>
-    <% @books.each do |book| %>
+  <%= link_to "➕ Add Book", new_book_path, class: "btn btn-success mb-3" %>
+
+  <table class="table table-bordered table-hover">
+    <thead class="table-dark">
       <tr>
-        <td><%= book.title %></td>
-        <td><%= book.author %></td>
-        <td><%= book.genre %></td>
-        <td>₹<%= book.price %></td>
-
-        <td>
-          <%= link_to "Show", book_path(book) %>
-          <%= link_to "Edit", edit_book_path(book) %>
-          <%= link_to "Delete", book_path(book), method: :delete, data: { confirm: "Are you sure?" } %>
-        </td>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Genre</th>
+        <th>Price</th>
+        <th>Actions</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @books.each do |book| %>
+        <tr>
+          <td><%= book.title %></td>
+          <td><%= book.author %></td>
+          <td><%= book.genre %></td>
+          <td>₹<%= book.price %></td>
+
+          <td>
+            <%= link_to "Show", book_path(book), class: "btn btn-info btn-sm" %>
+            <%= link_to "Edit", edit_book_path(book), class: "btn btn-warning btn-sm" %>
+            <%= link_to "Delete", book_path(book), method: :delete, class: "btn btn-danger btn-sm" %>
+
+            <% if book.available %>
+              <%= link_to "Issue", new_issue_path(book_id: book.id), class: "btn btn-success btn-sm" %>
+            <% else %>
+              <span class="badge bg-secondary">Not Available</span>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+
+  </table>
+
+</div>
