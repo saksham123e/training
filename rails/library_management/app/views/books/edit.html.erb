@@ -1,2 +1,20 @@
 <h1>Edit Book</h1>
-<%= render "form" %>
+
+<%= form_with model: @book do |f| %>
+
+  <p>Title:</p>
+  <%= f.text_field :title %>
+
+  <p>Author:</p>
+  <%= f.text_field :author %>
+
+  <p>Genre:</p>
+  <%= f.text_field :genre %>
+
+  <p>Price:</p>
+  <%= f.number_field :price %>
+
+  <br><br>
+  <%= f.submit "Update Book" %>
+
+<% end %>

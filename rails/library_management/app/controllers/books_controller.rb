@@ -43,7 +43,11 @@ class BooksController < ApplicationController
   def destroy
     @book = Book.find(params[:id])
     @book.destroy
-    redirect_to books_path
+
+    respond_to do |format|
+      format.html { redirect_to books_path }
+      format.turbo_stream
+    end
   end
 
   private
