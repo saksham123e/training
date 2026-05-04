@@ -11,6 +11,7 @@
     <th>Action</th>
   </tr>
 
+  <%= paginate @books %>
   <% @issues.each do |issue| %>
     <tr>
       <td><%= issue.user.name %></td>
