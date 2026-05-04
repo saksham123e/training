@@ -9,6 +9,7 @@ gem "devise", "~> 4.8"
 
 gem "kaminari"
 
+gem "friendly_id", "~> 5.4"
 
 gem "sqlite3", ">= 2.1"
 # Use the Puma web server [https://github.com/puma/puma]
