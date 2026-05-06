@@ -219,6 +219,18 @@ practice_db-# FROM orders;
 (5 rows)
 
 # rank
+practice_db=# SELECT user_id, amount,
+practice_db-# RANK() OVER (ORDER BY amount DESC) AS rnk
+practice_db-# FROM orders;
+ user_id | amount | rnk 
+---------+--------+-----
+       1 |   1000 |   1
+       2 |    700 |   2
+       1 |    500 |   3
+       3 |    300 |   4
+       1 |    200 |   5
+(5 rows)
+
 
 
 
