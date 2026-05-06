@@ -185,3 +185,22 @@ practice_db-# SELECT name FROM customers;
  Saksham
 (9 rows)
 
+#case
+
+practice_db=# SELECT amount,
+practice_db-# CASE
+practice_db-#   WHEN amount > 800 THEN 'High'
+practice_db-#   WHEN amount > 400 THEN 'Medium'
+practice_db-#   ELSE 'Low'
+practice_db-# END AS category
+practice_db-# FROM orders;
+ amount | category 
+--------+----------
+    500 | Medium
+   1000 | High
+    700 | Medium
+    300 | Low
+    200 | Low
+(5 rows)
+
+
