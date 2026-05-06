@@ -134,5 +134,24 @@ saksham_db-# WHERE age > 20;
 saksham_db=# 
 
 
+  name   | count 
+---------+-------
+ Rahul   |     1
+ Aman    |     1
+ sAKSHAM |     3
+(3 rows)
+
+practice_db=# SELECT users.name, COUNT(orders.id)
+practice_db-# FROM users
+practice_db-# JOIN orders
+practice_db-# ON users.id = orders.user_id
+practice_db-# GROUP BY users.name
+practice_db-# HAVING COUNT(orders.id) > 2;
+  name   | count 
+---------+-------
+ sAKSHAM |     3
+(1 row)
+
+practice_db=# 
 
 
