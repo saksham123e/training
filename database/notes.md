@@ -204,3 +204,21 @@ practice_db-# FROM orders;
 (5 rows)
 
 
+#ROW_NUMBER
+
+practice_db=# SELECT user_id, amount,
+practice_db-# ROW_NUMBER() OVER (ORDER BY amount DESC) AS rn
+practice_db-# FROM orders;
+ user_id | amount | rn 
+---------+--------+----
+       1 |   1000 |  1
+       2 |    700 |  2
+       1 |    500 |  3
+       3 |    300 |  4
+       1 |    200 |  5
+(5 rows)
+
+# rank
+
+
+
