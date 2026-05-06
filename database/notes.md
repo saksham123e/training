@@ -152,6 +152,36 @@ practice_db-# HAVING COUNT(orders.id) > 2;
  sAKSHAM |     3
 (1 row)
 
-practice_db=# 
 
+#UNION
+
+INSERT 0 3
+practice_db=# SELECT name FROM users
+practice_db-# UNION
+practice_db-# SELECT name FROM customers;
+  name   
+---------
+ Rahul
+ sAKSHAM
+ Saksham
+ Aman
+(4 rows)
+
+#UNION ALL
+
+practice_db=# SELECT name FROM users
+practice_db-# UNION ALL
+practice_db-# SELECT name FROM customers;
+  name   
+---------
+ sAKSHAM
+ Rahul
+ Aman
+ Rahul
+ Aman
+ Saksham
+ Rahul
+ Aman
+ Saksham
+(9 rows)
 
