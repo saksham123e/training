@@ -328,10 +328,55 @@ airline_db-# WHERE a.aname LIKE 'Boeing%';
  Neha
  Priya
  Rahul
+
  Rohit
  Saksham
  Yash
 (10 rows)
+
+airline_db=# 
+
+
+
+queary7
+
+airline_db=# SELECT f.source, f.destination
+airline_db-# FROM Flights f
+airline_db-# WHERE NOT EXISTS (
+airline_db(#     SELECT e.eid
+airline_db(#     FROM Employees e
+airline_db(#     WHERE e.salary > 100000
+airline_db(#     AND NOT EXISTS (
+airline_db(#         SELECT *
+airline_db(#         FROM Certified c
+airline_db(#         JOIN Aircraft a
+airline_db(#         ON c.aid = a.aid
+airline_db(#         WHERE c.eid = e.eid
+airline_db(#         AND a.cruisingrange >= f.distance
+airline_db(#     )
+airline_db(# );
+    source     | destination 
+---------------+-------------
+ Los Angeles   | Chicago
+ Los Angeles   | Honolulu
+ Madison       | New York
+ Chicago       | New York
+ Madison       | Chicago
+ Dallas        | Miami
+ Houston       | Seattle
+ Boston        | Denver
+ Atlanta       | Las Vegas
+ San Francisco | New York
+ Chicago       | Houston
+ Miami         | Boston
+ Seattle       | Los Angeles
+ Denver        | Atlanta
+ Las Vegas     | Dallas
+ London        | Paris
+ Paris         | Dubai
+ Dubai         | Delhi
+ Delhi         | Singapore
+(19 rows)
 
 airline_db=# 
 
