@@ -260,3 +260,32 @@ airline_db-# HAVING MIN(e.salary) > 80000;
 queary(b)
 
 
+airline_db=# SELECT c.eid, MAX(a.cruisingrange)
+airline_db-# FROM Certified c
+airline_db-# JOIN Aircraft a
+airline_db-# ON c.aid = a.aid
+airline_db-# GROUP BY c.eid
+airline_db-# HAVING COUNT(c.aid) > 3;
+ eid | max 
+-----+-----
+(0 rows)
+
+queary 3
+
+airline_db=# SELECT DISTINCT e.ename
+airline_db-# FROM Employees e
+airline_db-# JOIN Certified c
+airline_db-# ON e.eid = c.eid
+airline_db-# WHERE e.salary < (
+airline_db(#     SELECT MIN(price)
+airline_db(#     FROM Flights
+airline_db(#     WHERE source = 'Los Angeles'
+airline_db(#     AND destination = 'Honolulu'
+airline_db(# );
+ ename 
+-------
+(0 rows)
+
+queary 4
+
+
