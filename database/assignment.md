@@ -286,6 +286,27 @@ airline_db(# );
 -------
 (0 rows)
 
-queary 4
+queary 5
 
+airline_db=# SELECT * FROM Certified;
+airline_db=# SELECT DISTINCT e.ename
+airline_db-# FROM Employees e
+airline_db-# JOIN Certified c
+airline_db-# ON e.eid = c.eid
+airline_db-# JOIN Aircraft a
+airline_db-# ON c.aid = a.aid
+airline_db-# WHERE a.aname LIKE 'Boeing%';
+  ename
+---------
+ Harsh
+ Isha
+ Karan
+ Manav
+ Neha
+ Priya
+ Rahul
+ Rohit
+ Saksham
+ Yash
+(10 rows)
 
