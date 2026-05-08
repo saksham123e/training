@@ -225,6 +225,38 @@ airline_db=# SELECT * FROM Employees;
   17 | Harsh   | 101000
   18 | Nitin   |  68000
   19 | Sneha   |  79000
+  
+  
+ queary(a)
+ 
+airline_db=# SELECT a.aname
+airline_db-# FROM Aircraft a
+airline_db-# JOIN Certified c
+airline_db-# ON a.aid = c.aid
+airline_db-# JOIN Employees e
+airline_db-# ON c.eid = e.eid
+airline_db-# GROUP BY a.aname
+airline_db-# HAVING MIN(e.salary) > 80000;
+      aname      
+-----------------
+ Airbus A380
+ Airbus A320
+ Boeing 767
+ Boeing 787
+ Boeing 737
+ Boeing 777
+ Bombardier CRJ
+ Dassault Falcon
+ Boeing 747
+ Gulfstream G650
+ Antonov AN-225
+ ATR 72
+ Airbus A321
+
   20 | Yash    | 140000
 (20 rows)
+
+
+queary(b)
+
 
