@@ -468,6 +468,17 @@ airline_db(# );
 
 airline_db=# 
 
+query 12
+
+SELECT DISTINCT e.ename
+FROM Employees e
+WHERE e.eid NOT IN (
+    SELECT c.eid
+    FROM Certified c
+    JOIN Aircraft a
+    ON c.aid = a.aid
+    WHERE a.cruisingrange <= 1000
+);
 
 
 
