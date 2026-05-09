@@ -481,5 +481,34 @@ WHERE e.eid NOT IN (
 );
 
 
+query 13
+
+airline_db=# SELECT e.ename
+airline_db-# FROM Employees e
+airline_db-# JOIN Certified c
+airline_db-# ON e.eid = c.eid
+airline_db-# JOIN Aircraft a
+airline_db-# ON c.aid = a.aid
+airline_db-# GROUP BY e.eid, e.ename
+airline_db-# HAVING MIN(a.cruisingrange) > 1000
+airline_db-# AND COUNT(c.aid) >= 2;
+  ename  
+---------
+ Anjali
+ Manav
+ Saksham
+ Neha
+ Priya
+ Rohit
+ Arjun
+ Isha
+ Yash
+ Rahul
+ Harsh
+(11 rows)
+
+
+
+
 
 
