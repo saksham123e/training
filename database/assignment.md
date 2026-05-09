@@ -447,6 +447,26 @@ airline_db-# AS salary_difference;
  8828.571428571429
 (1 row)
 
+query 11
+
+
+airline_db=# SELECT ename, salary
+airline_db-# FROM Employees
+airline_db-# WHERE eid NOT IN (
+airline_db(#     SELECT eid
+airline_db(#     FROM Certified
+airline_db(# )
+airline_db-# AND salary > (
+airline_db(#     SELECT AVG(e.salary)
+airline_db(#     FROM Employees e
+airline_db(#     JOIN Certified c
+airline_db(#     ON e.eid = c.eid
+airline_db(# );
+ ename | salary 
+-------+--------
+(0 rows)
+
+airline_db=# 
 
 
 
