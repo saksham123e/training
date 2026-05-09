@@ -381,8 +381,7 @@ airline_db(# );
 airline_db=# 
 
 
-Print the enames of pilots who can operate planes with cruisingrange greater than 3000 miles,
-but are NOT certified on any Boeing aircraft.
+query 8
 
 
 airline_db=# SELECT DISTINCT e.ename
@@ -404,6 +403,50 @@ airline_db(# );
  Tanya
  Anjali
 (2 rows)
+
+query 9
+
+airline_db=# SELECT DISTINCT f1.departs
+airline_db-# FROM Flights f1
+airline_db-# WHERE f1.source = 'Madison'
+airline_db-# AND f1.destination = 'New York'
+airline_db-# AND f1.arrives <= '18:00'
+airline_db-# 
+airline_db-# UNION
+airline_db-# 
+airline_db-# SELECT DISTINCT f1.departs
+airline_db-# FROM Flights f1
+airline_db-# JOIN Flights f2
+airline_db-# ON f1.destination = f2.source
+airline_db-# WHERE f1.source = 'Madison'
+airline_db-# AND f2.destination = 'New York'
+airline_db-# AND f2.arrives <= '18:00';
+ departs  
+----------`
+9:00:00
+ 10:00:00
+(2 rows)
+
+query 10
+
+airline_db=# SELECT
+airline_db-# (
+airline_db(#     SELECT AVG(e.salary)
+airline_db(#     FROM Employees e
+airline_db(#     JOIN Certified c
+airline_db(#     ON e.eid = c.eid
+airline_db(# )
+airline_db-# -
+airline_db-# (
+airline_db(#     SELECT AVG(salary)
+airline_db(#     FROM Employees
+airline_db(# )
+airline_db-# AS salary_difference;
+ salary_difference 
+-------------------
+ 8828.571428571429
+(1 row)
+
 
 
 
