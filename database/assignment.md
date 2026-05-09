@@ -508,6 +508,35 @@ airline_db-# AND COUNT(c.aid) >= 2;
 (11 rows)
 
 
+query 14
+
+airline_db=# SELECT DISTINCT e.ename
+airline_db-# FROM Employees e
+airline_db-# JOIN Certified c
+airline_db-# ON e.eid = c.eid
+airline_db-# JOIN Aircraft a
+airline_db-# ON c.aid = a.aid
+airline_db-# GROUP BY e.eid, e.ename
+airline_db-# HAVING MIN(a.cruisingrange) > 1000
+airline_db-# AND SUM(
+airline_db(#     CASE
+airline_db(#         WHEN a.aname LIKE 'Boeing%' THEN 1
+airline_db(#         ELSE 0
+airline_db(#     END
+airline_db(# ) > 0;
+  ename  
+---------
+ Rahul
+ Neha
+ Harsh
+ Manav
+ Rohit
+ Yash
+ Isha
+ Priya
+ Saksham
+ Karan
+(10 rows)
 
 
 
