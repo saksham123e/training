@@ -380,3 +380,32 @@ airline_db(# );
 
 airline_db=# 
 
+
+Print the enames of pilots who can operate planes with cruisingrange greater than 3000 miles,
+but are NOT certified on any Boeing aircraft.
+
+
+airline_db=# SELECT DISTINCT e.ename
+airline_db-# FROM Employees e
+airline_db-# JOIN Certified c
+airline_db-# ON e.eid = c.eid
+airline_db-# JOIN Aircraft a
+airline_db-# ON c.aid = a.aid
+airline_db-# WHERE a.cruisingrange > 3000
+airline_db-# AND e.eid NOT IN (
+airline_db(#     SELECT c.eid
+airline_db(#     FROM Certified c
+airline_db(#     JOIN Aircraft a
+airline_db(#     ON c.aid = a.aid
+airline_db(#     WHERE a.aname LIKE 'Boeing%'
+airline_db(# );
+ ename  
+--------
+ Tanya
+ Anjali
+(2 rows)
+
+
+
+
+
