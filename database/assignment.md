@@ -538,6 +538,50 @@ airline_db(# ) > 0;
  Karan
 (10 rows)
 
+airline_db=# SELECT e.ename, a.aid
+airline_db-# FROM Employees e
+airline_db-# JOIN Certified c
+airline_db-# ON e.eid = c.eid
+airline_db-# JOIN Aircraft a
+airline_db-# ON c.aid = a.aid;
+airline_db=# 
 
 
+ ename  | aid 
+---------+-----
+ Rahul   | 101
+ Rahul   | 102
+ Saksham | 101
+ Saksham | 103
+ Saksham | 105
+ Aman    | 104
+ Priya   | 102
+ Priya   | 103
+ Karan   | 105
+ Rohit   | 106
+ Rohit   | 107
+ Simran  | 108
+ Neha    | 101
+ Neha    | 106
+ Neha    | 115
+ Arjun   | 109
+ Arjun   | 110
+ Anjali  | 111
+ Anjali  | 112
+ Vikas   | 104
+ Pooja   | 108
+ Manav   | 115
+ Manav   | 107
+ Manav   | 111
+ Isha    | 103
+ Isha    | 114
+ Dev     | 110
+ Tanya   | 112
+ Harsh   | 113
+ Harsh   | 101
+ Nitin   | 104
+ Sneha   | 108
+ Yash    | 115
+ Yash    | 106
+ Yash    | 107
 
