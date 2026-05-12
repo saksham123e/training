@@ -615,3 +615,29 @@ airline_db-# WHERE a.cruisingrange > 5000;
 (16 rows)
 
 
+
+
+airline_db=# SELECT e.ename, a.aname
+airline_db-# FROM Employees e
+airline_db-# JOIN Certified c
+airline_db-# ON e.eid = c.eid
+airline_db-# JOIN Aircraft a
+airline_db-# ON c.aid = a.aid
+airline_db-# WHERE a.cruisingrange > 3000
+airline_db-# AND a.aname LIKE 'Boeing%';
+  ename  |   aname    
+---------+------------
+ Rahul   | Boeing 747
+ Saksham | Boeing 747
+ Saksham | Boeing 737
+ Saksham | Boeing 777
+ Priya   | Boeing 737
+ Karan   | Boeing 777
+ Rohit   | Boeing 787
+ Neha    | Boeing 747
+ Manav   | Boeing 787
+ Isha    | Boeing 737
+ Harsh   | Boeing 767
+ Harsh   | Boeing 747
+ Yash    | Boeing 787
+
