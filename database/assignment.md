@@ -706,3 +706,32 @@ airline_db-# WHERE a.cruisingrange > 4000;
  Yash
  Yash
 
+
+
+
+
+
+
+airline_db=# SELECT e.ename
+airline_db-# FROM Employees e
+airline_db-# JOIN Certified c
+airline_db-# ON e.eid = c.eid
+airline_db-# JOIN Aircraft a
+airline_db-# ON c.aid = a.aid
+airline_db-# WHERE a.aname LIKE 'Boeing%';
+  ename  
+---------
+ Rahul
+ Saksham
+ Saksham
+ Saksham
+ Priya
+ Karan
+ Rohit
+ Neha
+ Manav
+ Isha
+ Harsh
+ Harsh
+ Yash
+
