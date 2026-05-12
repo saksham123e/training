@@ -641,3 +641,28 @@ airline_db-# AND a.aname LIKE 'Boeing%';
  Harsh   | Boeing 747
  Yash    | Boeing 787
 
+
+airline_db=# SELECT e.ename, e.salary
+airline_db-# FROM Employees e
+airline_db-# JOIN Certified c
+airline_db-# ON e.eid = c.eid
+airline_db-# JOIN Aircraft a
+airline_db-# ON c.aid = a.aid
+airline_db-# WHERE a.aname LIKE 'Boeing%';
+  ename  | salary 
+---------+--------
+ Rahul   |  90000
+ Saksham | 120000
+ Saksham | 120000
+ Saksham | 120000
+ Priya   |  85000
+ Karan   |  95000
+ Rohit   | 110000
+ Neha    | 130000
+ Manav   | 150000
+ Isha    |  92000
+ Harsh   | 101000
+ Harsh   | 101000
+ Yash    | 140000
+
+
