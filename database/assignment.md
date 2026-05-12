@@ -585,3 +585,33 @@ airline_db=#
  Yash    | 106
  Yash    | 107
 
+
+
+airline_db=# SELECT e.ename, a.aname
+airline_db-# FROM Employees e
+airline_db-# JOIN Certified c
+airline_db-# ON e.eid = c.eid
+airline_db-# JOIN Aircraft a
+airline_db-# ON c.aid = a.aid
+airline_db-# WHERE a.cruisingrange > 5000;
+  ename  |      aname      
+---------+-----------------
+ Saksham | Boeing 777
+ Karan   | Boeing 777
+ Rohit   | Airbus A380
+ Rohit   | Boeing 787
+ Neha    | Airbus A380
+ Neha    | Antonov AN-225
+ Anjali  | Gulfstream G650
+ Anjali  | Dassault Falcon
+ Manav   | Antonov AN-225
+ Manav   | Boeing 787
+ Manav   | Gulfstream G650
+ Tanya   | Dassault Falcon
+ Harsh   | Boeing 767
+ Yash    | Antonov AN-225
+ Yash    | Airbus A380
+ Yash    | Boeing 787
+(16 rows)
+
+
