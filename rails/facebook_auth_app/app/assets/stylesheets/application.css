@@ -1,10 +1,86 @@
-/*
- * This is a manifest file that'll be compiled into application.css.
- *
- * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
- * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
- * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
- * depending on specificity.
- *
- * Consider organizing styles into separate files for maintainability.
- */
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0f172a, #1e3a8a, #111827);
+  color: white;
+}
+
+nav {
+  padding: 18px 40px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-right: 20px;
+  font-weight: bold;
+}
+
+.container {
+  width: 85%;
+  margin: 80px auto;
+  text-align: center;
+}
+
+.hero-card, .dashboard-card, .profile-card {
+  max-width: 650px;
+  margin: auto;
+  padding: 45px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.13);
+  backdrop-filter: blur(18px);
+  box-shadow:
+    0 30px 70px rgba(0,0,0,0.45),
+    inset 0 1px 1px rgba(255,255,255,0.3);
+  transform: perspective(1000px) rotateX(4deg);
+}
+
+h1 {
+  font-size: 44px;
+  margin-bottom: 15px;
+}
+
+p {
+  font-size: 18px;
+  color: #dbeafe;
+}
+
+.btn, input[type="submit"], button {
+  border: none;
+  padding: 14px 28px;
+  border-radius: 14px;
+  margin: 10px;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 12px 25px rgba(37, 99, 235, 0.45);
+  transition: 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn:hover, input[type="submit"]:hover, button:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 18px 35px rgba(124, 58, 237, 0.55);
+}
+
+.info-box {
+  margin-top: 25px;
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(0,0,0,0.25);
+  text-align: left;
+}
+
+input[type="email"], input[type="password"] {
+  width: 90%;
+  padding: 13px;
+  margin: 10px 0;
+  border-radius: 12px;
+  border: none;
+}

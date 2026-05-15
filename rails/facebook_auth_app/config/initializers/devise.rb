@@ -275,8 +275,8 @@ Devise.setup do |config|
   config.omniauth :facebook,
     Rails.application.credentials.facebook[:app_id],
     Rails.application.credentials.facebook[:app_secret],
-    scope: "email",
-    info_fields: "email,name"
+    scope: "public_profile",
+    info_fields: "name"
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.

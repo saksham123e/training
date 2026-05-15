@@ -26,4 +26,17 @@
   <body>
     <%= yield %>
   </body>
+  <nav style="padding:15px; background:#1877f2; color:white;">
+    <%= link_to "Home", root_path, style:"color:white; margin-right:15px;" %>
+
+    <% if user_signed_in? %>
+      <%= link_to "Dashboard", dashboard_path, style:"color:white; margin-right:15px;" %>
+
+      <%= link_to "Profile", profile_path, style:"color:white; margin-right:15px;" %>
+
+      <span>
+        Logged in as <%= current_user.email %>
+      </span>
+    <% end %>
+  </nav>
 </html>
