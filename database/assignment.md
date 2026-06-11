@@ -735,3 +735,26 @@ airline_db-# WHERE a.aname LIKE 'Boeing%';
  Harsh
  Yash
 
+
+practice
+
+Q1
+
+Query
+SELECT user_id, COUNT(*)
+FROM Orders
+GROUP BY user_id;
+
+Q2.
+Query
+SELECT user_id, SUM(amount)
+FROM Orders
+GROUP BY user_id;
+
+
+Q3. 
+Query
+SELECT user_id, AVG(amount)
+FROM Orders
+GROUP BY user_id;
+
