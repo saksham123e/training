@@ -1,0 +1,25 @@
+<div class="container">
+  <h1>Website Form Structure Reader</h1>
+
+  <p>Enter a website URL to analyze its forms.</p>
+
+    <%= form_with url: "/analyze", method: :post, data: { turbo: false } do %>
+
+    <div>
+      <%= label_tag :url, "Website URL" %>
+    </div>
+
+    <div>
+      <%= text_field_tag :url, nil,
+          placeholder: "https://example.com",
+          required: true %>
+    </div>
+
+    <br>
+
+    <div>
+      <%= submit_tag "Analyze Website" %>
+    </div>
+
+  <% end %>
+</div>

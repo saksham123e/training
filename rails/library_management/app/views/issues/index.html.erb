@@ -1,0 +1,9 @@
+<h1>All Issued Books</h1>
+
+<% @issues.each do |issue| %>
+  <p>
+    <strong>User:</strong> <%= issue.user.name %> <br>
+    <strong>Book:</strong> <%= issue.book.title %>
+  </p>
+  <hr>
+<% end %>

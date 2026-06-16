@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | Form AI Auth</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["'Space Grotesk'", "sans-serif"],
+            },
+            colors: {
+              navy: "#0f172a",
+              mint: "#10b981",
+              sky: "#0ea5e9",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body class="min-h-screen bg-slate-950 text-white">
+    <main class="mx-auto min-h-screen max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+      <header class="glass-panel flex flex-col gap-4 rounded-[2rem] border border-white/10 bg-white/5 px-5 py-5 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <p class="text-sm uppercase tracking-[0.28em] text-emerald-300">Protected Dashboard</p>
+          <h1 class="mt-2 text-3xl font-bold">Account overview</h1>
+        </div>
+        <div class="flex gap-3">
+          <a href="/extra" class="rounded-2xl border border-white/15 px-4 py-3 text-sm font-semibold text-white transition hover:bg-white/10">Open extra page</a>
+          <button data-action="logout" class="rounded-2xl bg-emerald-400 px-4 py-3 text-sm font-semibold text-slate-950 transition hover:bg-emerald-300">Logout</button>
+        </div>
+      </header>
+
+      <div id="dashboardMessage" class="mt-6 hidden"></div>
+
+      <section class="mt-6 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+        <div class="rounded-[2rem] border border-white/10 bg-white/5 p-6">
+          <p class="text-sm font-semibold uppercase tracking-[0.24em] text-sky-300">Welcome</p>
+          <h2 id="welcomeName" class="mt-4 text-4xl font-bold">Loading...</h2>
+          <p class="mt-4 max-w-2xl text-base leading-7 text-slate-300">
+            This page is protected on the frontend by localStorage token checks and on the backend by JWT verification through `/api/me`.
+          </p>
+
+          <div class="mt-8 grid gap-4 sm:grid-cols-3">
+            <div class="rounded-2xl border border-white/10 bg-slate-900/70 p-4">
+              <p class="text-sm text-slate-400">User ID</p>
+              <p id="userId" class="mt-3 text-2xl font-bold text-white">-</p>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-slate-900/70 p-4">
+              <p class="text-sm text-slate-400">Email</p>
+              <p id="userEmail" class="mt-3 break-all text-base font-semibold text-white">-</p>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-slate-900/70 p-4">
+              <p class="text-sm text-slate-400">Status</p>
+              <p class="mt-3 text-2xl font-bold text-emerald-300">Active</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-[2rem] border border-white/10 bg-gradient-to-br from-emerald-400 to-sky-400 p-[1px]">
+          <div class="h-full rounded-[2rem] bg-slate-950 p-6">
+            <p class="text-sm font-semibold uppercase tracking-[0.24em] text-emerald-300">Quick actions</p>
+            <div class="mt-6 space-y-4">
+              <a href="/extra" class="block rounded-2xl border border-white/10 bg-white/5 p-4 transition hover:bg-white/10">
+                <p class="text-lg font-bold text-white">Open extra protected page</p>
+                <p class="mt-2 text-sm text-slate-300">Move between protected screens using the same stored JWT.</p>
+              </a>
+              <a href="/login" class="block rounded-2xl border border-white/10 bg-white/5 p-4 transition hover:bg-white/10">
+                <p class="text-lg font-bold text-white">Back to auth center</p>
+                <p class="mt-2 text-sm text-slate-300">Useful for checking login state and form feedback flows.</p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+    <script>
+      bindLogoutButtons();
+
+      (async () => {
+        const user = await requireAuth();
+        if (!user) {
+          return;
+        }
+
+        document.getElementById("welcomeName").textContent = "Hello, " + user.name;
+        document.getElementById("userId").textContent = user.id;
+        document.getElementById("userEmail").textContent = user.email;
+        showMessage("dashboardMessage", "Authenticated successfully.", "success");
+      })();
+    </script>
+  </body>
+</html>

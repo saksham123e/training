@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Math App</title>
+    <link rel="stylesheet" href="code.css">
+</head>
+<body>
+
+    <header>
+        <h1>Select your Question</h1>
+    </header>
+
+    <div class="button-box">
+        <button onclick="openModal('prime')">Prime Number</button>
+        <button onclick="openModal('fibo')">Fibonacci Number</button>
+        <button onclick="openModal('odd')">Odd & Even</button>
+    </div>
+
+
+    <div id="primePanel">
+        <div class="panel-content">
+            <h2>Prime Range</h2>
+            <input type="number" id="start" placeholder="Start">
+            <input type="number" id="end" placeholder="End">
+            <button onclick="checkPrime()">Check</button>
+            <h3 id="primeResult"></h3>
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+
+    <div id="modal">
+        <div class="modal-content">
+            <h2 id="title"></h2>
+            <input type="number" id="numberInput" placeholder="Enter number">
+            <button onclick="checkNumber()">Check</button>
+            <h3 id="modalResult"></h3>
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script src="code.js"></script>
+</body>
+</html>

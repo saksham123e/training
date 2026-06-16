@@ -1,0 +1,14 @@
+<h1>Issue Book</h1>
+
+<%= form_with model: @issue do |f| %>
+
+  <p>User:</p>
+  <%= f.collection_select :user_id, @users, :id, :name %>
+
+  <p>Book:</p>
+  <%= f.collection_select :book_id, @books, :id, :title %>
+
+  <br><br>
+  <%= f.submit "Issue Book" %>
+
+<% end %>
