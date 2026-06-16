@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Background */
+body {
+  background: linear-gradient(135deg, #1d2b64, #f8cdda);
+  min-height: 100vh;
+  padding-top: 80px;
+  text-align: center;
+}
+
+/* Heading */
+h2 {
+  color: white;
+  margin-bottom: 30px;
+  font-size: 28px;
+}
+
+/* Inputs (vertical automatically) */
+input {
+  display: block;
+  width: 260px;
+  margin: 12px auto;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+
+  /* glass effect */
+  background: rgba(255,255,255,0.2);
+  color: white;
+  backdrop-filter: blur(10px);
+}
+
+/* Placeholder color */
+input::placeholder {
+  color: #eee;
+}
+
+/* Output box */
+#fullName {
+  background: white;
+  color: #333;
+  font-weight: bold;
+}
+
+/* Focus animation */
+input:focus {
+  transform: scale(1.05);
+  transition: 0.2s;
+  box-shadow: 0 0 10px rgba(255,255,255,0.7);
+}

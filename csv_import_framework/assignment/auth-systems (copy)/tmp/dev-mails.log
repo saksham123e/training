@@ -1,0 +1,464 @@
+
+================================================================================
+Timestamp: 2026-04-14T16:47:01.707962
+From: no-reply@form-ai.local
+To: postgres.user@example.com
+--------------------------------------------------------------------------------
+Subject: Reset your password
+From: Form AI Auth <no-reply@form-ai.local>
+To: postgres.user@example.com
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============2895403198289512205=="
+
+--===============2895403198289512205==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hello Postgres User,
+
+We received a request to reset your password.
+Use the link below to choose a new password:
+
+http://127.0.0.1:8000/reset-password?token=3DDV_4CGv4ftx9p4m9DIgi97g46jSGF-Ez=
+zPaEWAw3euE
+
+This link expires in 30 minutes.
+If you did not request this, you can ignore this email.
+
+--===============2895403198289512205==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+
+        <html>
+          <body style=3D"font-family: Arial, sans-serif; color: #0f172a;">
+            <h2>Reset your password</h2>
+            <p>Hello Postgres User,</p>
+            <p>We received a request to reset your password.</p>
+            <p>
+              <a href=3D"http://127.0.0.1:8000/reset-password?token=3DDV_4CGv=
+4ftx9p4m9DIgi97g46jSGF-EzzPaEWAw3euE" style=3D"display:inline-block;padding:1=
+2px 18px;background:#0f766e;color:#ffffff;text-decoration:none;border-radius:=
+8px;">
+                Reset Password
+              </a>
+            </p>
+            <p>If the button does not work, use this link:</p>
+            <p><a href=3D"http://127.0.0.1:8000/reset-password?token=3DDV_4CG=
+v4ftx9p4m9DIgi97g46jSGF-EzzPaEWAw3euE">http://127.0.0.1:8000/reset-password?t=
+oken=3DDV_4CGv4ftx9p4m9DIgi97g46jSGF-EzzPaEWAw3euE</a></p>
+            <p>This link expires in 30 minutes.</p>
+            <p>If you did not request this, you can ignore this email.</p>
+          </body>
+        </html>
+       =20
+
+--===============2895403198289512205==--
+
+================================================================================
+Timestamp: 2026-04-14T16:48:25.342401
+From: no-reply@form-ai.local
+To: sakshamarora1275@gmail.com
+--------------------------------------------------------------------------------
+Subject: Reset your password
+From: Form AI Auth <no-reply@form-ai.local>
+To: sakshamarora1275@gmail.com
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============6138590632832399544=="
+
+--===============6138590632832399544==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hello Saksham Arora,
+
+We received a request to reset your password.
+Use the link below to choose a new password:
+
+http://127.0.0.1:8000/reset-password?token=3D7SiwTQZJTxozZ0rZTqr26yNyeG8kplbU=
+x2si12cz25E
+
+This link expires in 30 minutes.
+If you did not request this, you can ignore this email.
+
+--===============6138590632832399544==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+
+        <html>
+          <body style=3D"font-family: Arial, sans-serif; color: #0f172a;">
+            <h2>Reset your password</h2>
+            <p>Hello Saksham Arora,</p>
+            <p>We received a request to reset your password.</p>
+            <p>
+              <a href=3D"http://127.0.0.1:8000/reset-password?token=3D7SiwTQZ=
+JTxozZ0rZTqr26yNyeG8kplbUx2si12cz25E" style=3D"display:inline-block;padding:1=
+2px 18px;background:#0f766e;color:#ffffff;text-decoration:none;border-radius:=
+8px;">
+                Reset Password
+              </a>
+            </p>
+            <p>If the button does not work, use this link:</p>
+            <p><a href=3D"http://127.0.0.1:8000/reset-password?token=3D7SiwTQ=
+ZJTxozZ0rZTqr26yNyeG8kplbUx2si12cz25E">http://127.0.0.1:8000/reset-password?t=
+oken=3D7SiwTQZJTxozZ0rZTqr26yNyeG8kplbUx2si12cz25E</a></p>
+            <p>This link expires in 30 minutes.</p>
+            <p>If you did not request this, you can ignore this email.</p>
+          </body>
+        </html>
+       =20
+
+--===============6138590632832399544==--
+
+================================================================================
+Timestamp: 2026-04-14T16:53:22.826339
+From: no-reply@form-ai.local
+To: sakshamaaa11112@gmail.com
+--------------------------------------------------------------------------------
+Subject: Reset your password
+From: Form AI Auth <no-reply@form-ai.local>
+To: sakshamaaa11112@gmail.com
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============6956654707877497265=="
+
+--===============6956654707877497265==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hello saksham,
+
+We received a request to reset your password.
+Use the link below to choose a new password:
+
+http://127.0.0.1:8000/reset-password?token=3D8lgfAtAMMTRwf1XUEkC7OhYYtZ4Ftq6q=
+cWCpdDTitYw
+
+This link expires in 30 minutes.
+If you did not request this, you can ignore this email.
+
+--===============6956654707877497265==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+
+        <html>
+          <body style=3D"font-family: Arial, sans-serif; color: #0f172a;">
+            <h2>Reset your password</h2>
+            <p>Hello saksham,</p>
+            <p>We received a request to reset your password.</p>
+            <p>
+              <a href=3D"http://127.0.0.1:8000/reset-password?token=3D8lgfAtA=
+MMTRwf1XUEkC7OhYYtZ4Ftq6qcWCpdDTitYw" style=3D"display:inline-block;padding:1=
+2px 18px;background:#0f766e;color:#ffffff;text-decoration:none;border-radius:=
+8px;">
+                Reset Password
+              </a>
+            </p>
+            <p>If the button does not work, use this link:</p>
+            <p><a href=3D"http://127.0.0.1:8000/reset-password?token=3D8lgfAt=
+AMMTRwf1XUEkC7OhYYtZ4Ftq6qcWCpdDTitYw">http://127.0.0.1:8000/reset-password?t=
+oken=3D8lgfAtAMMTRwf1XUEkC7OhYYtZ4Ftq6qcWCpdDTitYw</a></p>
+            <p>This link expires in 30 minutes.</p>
+            <p>If you did not request this, you can ignore this email.</p>
+          </body>
+        </html>
+       =20
+
+--===============6956654707877497265==--
+
+================================================================================
+Timestamp: 2026-04-14T17:01:49.706114
+From: no-reply@form-ai.local
+To: sakshamaaa11112@gmail.com
+--------------------------------------------------------------------------------
+Subject: Reset your password
+From: Form AI Auth <no-reply@form-ai.local>
+To: sakshamaaa11112@gmail.com
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============7911680364012150231=="
+
+--===============7911680364012150231==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hello saksham,
+
+We received a request to reset your password.
+Use the link below to choose a new password:
+
+http://127.0.0.1:8000/reset-password?token=3DTSZAKUxj02AniI-w5twch-t_mC8zAwko=
+Tdd4YLEi6aE
+
+This link expires in 30 minutes.
+If you did not request this, you can ignore this email.
+
+--===============7911680364012150231==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+
+        <html>
+          <body style=3D"font-family: Arial, sans-serif; color: #0f172a;">
+            <h2>Reset your password</h2>
+            <p>Hello saksham,</p>
+            <p>We received a request to reset your password.</p>
+            <p>
+              <a href=3D"http://127.0.0.1:8000/reset-password?token=3DTSZAKUx=
+j02AniI-w5twch-t_mC8zAwkoTdd4YLEi6aE" style=3D"display:inline-block;padding:1=
+2px 18px;background:#0f766e;color:#ffffff;text-decoration:none;border-radius:=
+8px;">
+                Reset Password
+              </a>
+            </p>
+            <p>If the button does not work, use this link:</p>
+            <p><a href=3D"http://127.0.0.1:8000/reset-password?token=3DTSZAKU=
+xj02AniI-w5twch-t_mC8zAwkoTdd4YLEi6aE">http://127.0.0.1:8000/reset-password?t=
+oken=3DTSZAKUxj02AniI-w5twch-t_mC8zAwkoTdd4YLEi6aE</a></p>
+            <p>This link expires in 30 minutes.</p>
+            <p>If you did not request this, you can ignore this email.</p>
+          </body>
+        </html>
+       =20
+
+--===============7911680364012150231==--
+
+================================================================================
+Timestamp: 2026-04-14T17:03:00.434279
+From: no-reply@form-ai.local
+To: sakshamarora1275@gmail.com
+--------------------------------------------------------------------------------
+Subject: Reset your password
+From: Form AI Auth <no-reply@form-ai.local>
+To: sakshamarora1275@gmail.com
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============2573784930793772146=="
+
+--===============2573784930793772146==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hello Saksham Arora,
+
+We received a request to reset your password.
+Use the link below to choose a new password:
+
+http://127.0.0.1:8000/reset-password?token=3DAwzI0cBGuJjbXiGWgWMTVr6tDbSD_ZXD=
+xywBnbRWpHw
+
+This link expires in 30 minutes.
+If you did not request this, you can ignore this email.
+
+--===============2573784930793772146==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+
+        <html>
+          <body style=3D"font-family: Arial, sans-serif; color: #0f172a;">
+            <h2>Reset your password</h2>
+            <p>Hello Saksham Arora,</p>
+            <p>We received a request to reset your password.</p>
+            <p>
+              <a href=3D"http://127.0.0.1:8000/reset-password?token=3DAwzI0cB=
+GuJjbXiGWgWMTVr6tDbSD_ZXDxywBnbRWpHw" style=3D"display:inline-block;padding:1=
+2px 18px;background:#0f766e;color:#ffffff;text-decoration:none;border-radius:=
+8px;">
+                Reset Password
+              </a>
+            </p>
+            <p>If the button does not work, use this link:</p>
+            <p><a href=3D"http://127.0.0.1:8000/reset-password?token=3DAwzI0c=
+BGuJjbXiGWgWMTVr6tDbSD_ZXDxywBnbRWpHw">http://127.0.0.1:8000/reset-password?t=
+oken=3DAwzI0cBGuJjbXiGWgWMTVr6tDbSD_ZXDxywBnbRWpHw</a></p>
+            <p>This link expires in 30 minutes.</p>
+            <p>If you did not request this, you can ignore this email.</p>
+          </body>
+        </html>
+       =20
+
+--===============2573784930793772146==--
+
+================================================================================
+Timestamp: 2026-04-14T17:08:58.790041
+From: no-reply@form-ai.local
+To: sakshamarora1275@gmail.com
+--------------------------------------------------------------------------------
+Subject: Reset your password
+From: Form AI Auth <no-reply@form-ai.local>
+To: sakshamarora1275@gmail.com
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============1174903290119381304=="
+
+--===============1174903290119381304==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hello Saksham Arora,
+
+We received a request to reset your password.
+Use the link below to choose a new password:
+
+http://127.0.0.1:8000/reset-password?token=3DZCzMxIsrDUM9znPeO_cV3321BkHEpTXS=
+SKg2GpDJazA
+
+This link expires in 30 minutes.
+If you did not request this, you can ignore this email.
+
+--===============1174903290119381304==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+
+        <html>
+          <body style=3D"font-family: Arial, sans-serif; color: #0f172a;">
+            <h2>Reset your password</h2>
+            <p>Hello Saksham Arora,</p>
+            <p>We received a request to reset your password.</p>
+            <p>
+              <a href=3D"http://127.0.0.1:8000/reset-password?token=3DZCzMxIs=
+rDUM9znPeO_cV3321BkHEpTXSSKg2GpDJazA" style=3D"display:inline-block;padding:1=
+2px 18px;background:#0f766e;color:#ffffff;text-decoration:none;border-radius:=
+8px;">
+                Reset Password
+              </a>
+            </p>
+            <p>If the button does not work, use this link:</p>
+            <p><a href=3D"http://127.0.0.1:8000/reset-password?token=3DZCzMxI=
+srDUM9znPeO_cV3321BkHEpTXSSKg2GpDJazA">http://127.0.0.1:8000/reset-password?t=
+oken=3DZCzMxIsrDUM9znPeO_cV3321BkHEpTXSSKg2GpDJazA</a></p>
+            <p>This link expires in 30 minutes.</p>
+            <p>If you did not request this, you can ignore this email.</p>
+          </body>
+        </html>
+       =20
+
+--===============1174903290119381304==--
+
+================================================================================
+Timestamp: 2026-04-14T17:11:58.858550
+From: no-reply@form-ai.local
+To: nitin.bhadana@berylsystems.com
+--------------------------------------------------------------------------------
+Subject: Reset your password
+From: Form AI Auth <no-reply@form-ai.local>
+To: nitin.bhadana@berylsystems.com
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============7659856228698691849=="
+
+--===============7659856228698691849==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hello nitin,
+
+We received a request to reset your password.
+Use the link below to choose a new password:
+
+http://127.0.0.1:8000/reset-password?token=3Do9ZfpmMN4YJc9n4KU7jmhfYSC7dsf1v-=
+aSrrJRYOHNo
+
+This link expires in 30 minutes.
+If you did not request this, you can ignore this email.
+
+--===============7659856228698691849==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+
+        <html>
+          <body style=3D"font-family: Arial, sans-serif; color: #0f172a;">
+            <h2>Reset your password</h2>
+            <p>Hello nitin,</p>
+            <p>We received a request to reset your password.</p>
+            <p>
+              <a href=3D"http://127.0.0.1:8000/reset-password?token=3Do9ZfpmM=
+N4YJc9n4KU7jmhfYSC7dsf1v-aSrrJRYOHNo" style=3D"display:inline-block;padding:1=
+2px 18px;background:#0f766e;color:#ffffff;text-decoration:none;border-radius:=
+8px;">
+                Reset Password
+              </a>
+            </p>
+            <p>If the button does not work, use this link:</p>
+            <p><a href=3D"http://127.0.0.1:8000/reset-password?token=3Do9Zfpm=
+MN4YJc9n4KU7jmhfYSC7dsf1v-aSrrJRYOHNo">http://127.0.0.1:8000/reset-password?t=
+oken=3Do9ZfpmMN4YJc9n4KU7jmhfYSC7dsf1v-aSrrJRYOHNo</a></p>
+            <p>This link expires in 30 minutes.</p>
+            <p>If you did not request this, you can ignore this email.</p>
+          </body>
+        </html>
+       =20
+
+--===============7659856228698691849==--
+
+================================================================================
+Timestamp: 2026-04-14T17:17:20.410085
+From: no-reply@form-ai.local
+To: nitin.bhadana@berylsystems.com
+--------------------------------------------------------------------------------
+Subject: Reset your password
+From: Form AI Auth <no-reply@form-ai.local>
+To: nitin.bhadana@berylsystems.com
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============3113661098909906635=="
+
+--===============3113661098909906635==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hello nitin,
+
+We received a request to reset your password.
+Use the link below to choose a new password:
+
+http://127.0.0.1:8000/reset-password?token=3DqxX8nIohpGDjncMtTNFYVwxTR8pIKn2c=
+a2U6eWEYDd8
+
+This link expires in 30 minutes.
+If you did not request this, you can ignore this email.
+
+--===============3113661098909906635==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+
+        <html>
+          <body style=3D"font-family: Arial, sans-serif; color: #0f172a;">
+            <h2>Reset your password</h2>
+            <p>Hello nitin,</p>
+            <p>We received a request to reset your password.</p>
+            <p>
+              <a href=3D"http://127.0.0.1:8000/reset-password?token=3DqxX8nIo=
+hpGDjncMtTNFYVwxTR8pIKn2ca2U6eWEYDd8" style=3D"display:inline-block;padding:1=
+2px 18px;background:#0f766e;color:#ffffff;text-decoration:none;border-radius:=
+8px;">
+                Reset Password
+              </a>
+            </p>
+            <p>If the button does not work, use this link:</p>
+            <p><a href=3D"http://127.0.0.1:8000/reset-password?token=3DqxX8nI=
+ohpGDjncMtTNFYVwxTR8pIKn2ca2U6eWEYDd8">http://127.0.0.1:8000/reset-password?t=
+oken=3DqxX8nIohpGDjncMtTNFYVwxTR8pIKn2ca2U6eWEYDd8</a></p>
+            <p>This link expires in 30 minutes.</p>
+            <p>If you did not request this, you can ignore this email.</p>
+          </body>
+        </html>
+       =20
+
+--===============3113661098909906635==--

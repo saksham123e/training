@@ -1,0 +1,112 @@
+<div class="container">
+  <h1>Analysis Result</h1>
+
+  <p><strong>URL:</strong> <%= @url %></p>
+
+  <% if @error.present? %>
+    <p style="color: red;">Error: <%= @error %></p>
+  <% else %>
+    <h2>Total Forms Found: <%= @forms_data.length %></h2>
+
+    <% if @forms_data.empty? %>
+      <p>No forms found on this webpage.</p>
+    <% end %>
+
+    <% @forms_data.each do |form| %>
+      <div class="card">
+        <h2>Form <%= form[:number] %></h2>
+
+        <p><strong>Action:</strong> <%= form[:action] %></p>
+        <p><strong>Method:</strong> <%= form[:method] %></p>
+
+        <h3>Labels</h3>
+        <% if form[:labels].empty? %>
+          <p>No labels found</p>
+        <% else %>
+          <ul>
+            <% form[:labels].each do |label| %>
+              <li><%= label %></li>
+            <% end %>
+          </ul>
+        <% end %>
+
+        <h3>Input Fields</h3>
+        <% if form[:inputs].empty? %>
+          <p>No input fields found</p>
+        <% else %>
+          <ul>
+            <% form[:inputs].each do |input| %>
+              <li>
+                name: <%= input[:name] %>,
+                type: <%= input[:type] %>,
+                placeholder: <%= input[:placeholder] %>,
+                required: <%= input[:required] %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+
+        <h3>Dropdowns</h3>
+        <% if form[:dropdowns].empty? %>
+          <p>No dropdowns found</p>
+        <% else %>
+          <% form[:dropdowns].each do |dropdown| %>
+            <p><strong><%= dropdown[:name] %></strong></p>
+            <ul>
+              <% dropdown[:options].each do |option| %>
+                <li><%= option %></li>
+              <% end %>
+            </ul>
+          <% end %>
+        <% end %>
+
+        <h3>Radio Buttons</h3>
+        <% if form[:radios].empty? %>
+          <p>No radio buttons found</p>
+        <% else %>
+          <ul>
+            <% form[:radios].each do |radio| %>
+              <li><%= radio[:name] %> = <%= radio[:value] %></li>
+            <% end %>
+          </ul>
+        <% end %>
+
+        <h3>Checkboxes</h3>
+        <% if form[:checkboxes].empty? %>
+          <p>No checkboxes found</p>
+        <% else %>
+          <ul>
+            <% form[:checkboxes].each do |checkbox| %>
+              <li><%= checkbox[:name] %> = <%= checkbox[:value] %></li>
+            <% end %>
+          </ul>
+        <% end %>
+
+        <h3>Hidden Fields</h3>
+        <% if form[:hidden_fields].empty? %>
+          <p>No hidden fields found</p>
+        <% else %>
+          <ul>
+            <% form[:hidden_fields].each do |hidden| %>
+              <li><%= hidden[:name] %> = <%= hidden[:value] %></li>
+            <% end %>
+          </ul>
+        <% end %>
+
+        <h3>Required Fields</h3>
+        <% if form[:required_fields].empty? %>
+          <p>No required fields found</p>
+        <% else %>
+          <ul>
+            <% form[:required_fields].each do |field| %>
+              <li><%= field %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <br>
+  <%= link_to "Analyze another website", root_path %>
+</div>

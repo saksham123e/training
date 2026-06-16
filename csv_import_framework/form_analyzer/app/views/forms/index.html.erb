@@ -1,0 +1,17 @@
+<h1>Website Scanner Dashboard</h1>
+
+<%= form_with url: "/analyze",
+method: :post,
+data: { turbo: false } do %>
+
+  <%= label_tag :url, "Enter Website URL" %>
+
+  <br><br>
+
+  <%= text_field_tag :url %>
+
+  <br><br>
+
+  <%= submit_tag "Analyze Website" %>
+
+<% end %>

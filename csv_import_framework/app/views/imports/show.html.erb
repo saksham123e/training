@@ -1,0 +1,16 @@
+<h1>Import Details</h1>
+
+<p><b>File:</b> <%= @import.file_name %></p>
+<p><b>Status:</b> <%= @import.status %></p>
+<p><b>Progress:</b> <%= @import.progress_text %></p>
+<p><b>Total Rows:</b> <%= @import.total_rows %></p>
+<p><b>Successful Rows:</b> <%= @import.successful_rows %></p>
+<p><b>Failed Rows:</b> <%= @import.failed_rows %></p>
+
+<h3>Errors</h3>
+
+<pre>
+<%= @import.error_summary %>
+</pre>
+
+<%= link_to "Back", imports_path %>

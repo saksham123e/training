@@ -1,0 +1,27 @@
+<h1>Import History</h1>
+
+<%= link_to "New Import", new_import_path %>
+
+<table border="1">
+  <tr>
+    <th>File Name</th>
+    <th>Status</th>
+    <th>Total</th>
+    <th>Success</th>
+    <th>Failed</th>
+    <th>Progress</th>
+    <th>View</th>
+  </tr>
+
+  <% @imports.each do |import| %>
+    <tr>
+      <td><%= import.file_name %></td>
+      <td><%= import.status %></td>
+      <td><%= import.total_rows %></td>
+      <td><%= import.successful_rows %></td>
+      <td><%= import.failed_rows %></td>
+      <td><%= import.progress_text %></td>
+      <td><%= link_to "Details", import_path(import) %></td>
+    </tr>
+  <% end %>
+</table>
