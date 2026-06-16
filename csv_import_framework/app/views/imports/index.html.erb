@@ -1,16 +1,19 @@
 <h1>Import History</h1>
 
-<%= link_to "New Import", new_import_path %>
+<%= link_to "New CSV Import", new_import_path %>
 
-<table border="1">
+<br><br>
+
+<table border="1" cellpadding="8">
   <tr>
     <th>File Name</th>
     <th>Status</th>
-    <th>Total</th>
-    <th>Success</th>
-    <th>Failed</th>
-    <th>Progress</th>
-    <th>View</th>
+    <th>Total Rows</th>
+    <th>Successful Rows</th>
+    <th>Failed Rows</th>
+    <th>Processed Rows</th>
+    <th>Uploaded At</th>
+    <th>Action</th>
   </tr>
 
   <% @imports.each do |import| %>
@@ -20,8 +23,9 @@
       <td><%= import.total_rows %></td>
       <td><%= import.successful_rows %></td>
       <td><%= import.failed_rows %></td>
-      <td><%= import.progress_text %></td>
-      <td><%= link_to "Details", import_path(import) %></td>
+      <td><%= import.processed_rows %></td>
+      <td><%= import.created_at.strftime("%d %b %Y %I:%M %p") %></td>
+      <td><%= link_to "View", import_path(import) %></td>
     </tr>
   <% end %>
 </table>
