@@ -11,12 +11,18 @@ class CsvImportService
   end
 
   def call
-    @import.update!(status: "processing", started_at: Time.current)
+    Rails.logger.info "Import started: #{@import.id}"
+
+    @import.update!(
+      status: "processing",
+      started_at: Time.current
+    )
 
     rows = CSV.parse(@file_content, headers: true)
-    @import.update!(total_rows: rows.size)
 
     validate_headers!(rows.headers)
+
+    @import.update!(total_rows: rows.size)
 
     rows.each_with_index do |row, index|
       process_row(row, index + 2)
@@ -25,15 +31,19 @@ class CsvImportService
 
     @import.update!(
       status: "completed",
-      error_summary: @errors.to_json,
+      error_summary: generate_error_csv,
       completed_at: Time.current
     )
+
+    Rails.logger.info "Import completed: #{@import.id}"
   rescue => e
     @import.update!(
       status: "failed",
       error_summary: e.message,
       completed_at: Time.current
     )
+
+    Rails.logger.error "Import failed: #{@import.id} - #{e.message}"
   end
 
   private
@@ -58,12 +68,14 @@ class CsvImportService
     row_errors << "First name is missing" if first_name.blank?
     row_errors << "Invalid email" if email.present? && !email.match?(URI::MailTo::EMAIL_REGEXP)
     row_errors << "Invalid phone number" if phone.present? && !phone.match?(/\A\d{10}\z/)
-    row_errors << "Duplicate email in CSV" if @seen_emails[email]
+    row_errors << "Duplicate email in CSV" if email.present? && @seen_emails[email]
     row_errors << "Email already exists in database" if email.present? && Customer.exists?(email: email)
 
     @seen_emails[email] = true if email.present?
 
     if row_errors.any?
+      Rails.logger.warn "Validation failed at row #{row_number}: #{row_errors.join(', ')}"
+
       @errors << {
         row: row_number,
         email: email,
@@ -82,5 +94,15 @@ class CsvImportService
     )
 
     @import.increment!(:successful_rows)
+  end
+
+  def generate_error_csv
+    CSV.generate(headers: true) do |csv|
+      csv << %w[row email error]
+
+      @errors.each do |error|
+        csv << [ error[:row], error[:email], error[:error] ]
+      end
+    end
   end
 end

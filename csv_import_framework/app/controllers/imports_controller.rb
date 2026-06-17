@@ -3,8 +3,7 @@ class ImportsController < ApplicationController
     @imports = Import.order(created_at: :desc)
   end
 
-  def new
-  end
+  def new; end
 
   def create
     file = params[:file]
@@ -26,5 +25,13 @@ class ImportsController < ApplicationController
 
   def show
     @import = Import.find(params[:id])
+  end
+
+  def error_report
+    import = Import.find(params[:id])
+
+    send_data import.error_summary,
+              filename: "import_#{import.id}_errors.csv",
+              type: "text/csv"
   end
 end

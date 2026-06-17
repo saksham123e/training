@@ -2,9 +2,17 @@
 
 <p><b>File Name:</b> <%= @import.file_name %></p>
 <p><b>Status:</b> <%= @import.status %></p>
+<p><b>Progress:</b> <%= @import.progress_text %></p>
 <p><b>Total Rows:</b> <%= @import.total_rows %></p>
 <p><b>Successful Rows:</b> <%= @import.successful_rows %></p>
 <p><b>Failed Rows:</b> <%= @import.failed_rows %></p>
-<p><b>Processed Rows:</b> <%= @import.processed_rows %></p>
+<p><b>Started At:</b> <%= @import.started_at %></p>
+<p><b>Completed At:</b> <%= @import.completed_at %></p>
+
+<% if @import.failed_rows.to_i > 0 %>
+  <%= link_to "Download Error Report", error_report_import_path(@import) %>
+<% end %>
+
+<br><br>
 
 <%= link_to "Back", imports_path %>
