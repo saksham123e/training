@@ -16,7 +16,7 @@ class CsvImportService
     rows = CSV.parse(@file_content, headers: true)
     @import.update!(total_rows: rows.size)
 
-    validate_columns!(rows.headers)
+    validate_headers!(rows.headers)
 
     rows.each_with_index do |row, index|
       process_row(row, index + 2)
@@ -38,12 +38,12 @@ class CsvImportService
 
   private
 
-  def validate_columns!(headers)
-    missing = REQUIRED_COLUMNS - headers
+  def validate_headers!(headers)
+    missing_columns = REQUIRED_COLUMNS - headers
 
-    if missing.any?
-      raise "Missing required columns: #{missing.join(', ')}"
-    end
+    return if missing_columns.empty?
+
+    raise "Missing required columns: #{missing_columns.join(', ')}"
   end
 
   def process_row(row, row_number)
@@ -52,22 +52,22 @@ class CsvImportService
     last_name = row["last_name"].to_s.strip
     phone = row["phone"].to_s.strip
 
-    errors = []
+    row_errors = []
 
-    errors << "Email is missing" if email.blank?
-    errors << "First name is missing" if first_name.blank?
-    errors << "Invalid email" unless email.match?(URI::MailTo::EMAIL_REGEXP)
-    errors << "Invalid phone number" if phone.present? && !phone.match?(/\A\d{10}\z/)
-    errors << "Duplicate email in CSV" if @seen_emails[email]
-    errors << "Email already exists" if Customer.exists?(email: email)
+    row_errors << "Email is missing" if email.blank?
+    row_errors << "First name is missing" if first_name.blank?
+    row_errors << "Invalid email" if email.present? && !email.match?(URI::MailTo::EMAIL_REGEXP)
+    row_errors << "Invalid phone number" if phone.present? && !phone.match?(/\A\d{10}\z/)
+    row_errors << "Duplicate email in CSV" if @seen_emails[email]
+    row_errors << "Email already exists in database" if email.present? && Customer.exists?(email: email)
 
-    @seen_emails[email] = true
+    @seen_emails[email] = true if email.present?
 
-    if errors.any?
+    if row_errors.any?
       @errors << {
         row: row_number,
         email: email,
-        error: errors.join(", ")
+        error: row_errors.join(", ")
       }
 
       @import.increment!(:failed_rows)

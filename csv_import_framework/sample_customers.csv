@@ -1,0 +1,5 @@
+email,first_name,last_name,phone
+john@example.com,John,Doe,1234567890
+jane@example.com,Jane,Smith,9876543210
+wrongemail,Wrong,User,12345
+john@example.com,Duplicate,User,1234567890
