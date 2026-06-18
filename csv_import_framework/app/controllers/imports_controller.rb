@@ -34,4 +34,11 @@ class ImportsController < ApplicationController
               filename: "import_#{import.id}_errors.csv",
               type: "text/csv"
   end
+
+  def destroy
+  import = Import.find(params[:id])
+    import.destroy
+
+    redirect_to imports_path, notice: "Import deleted successfully"
+  end
 end

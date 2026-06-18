@@ -1,18 +1,51 @@
-<h1>Import Details</h1>
+<div class="page-header">
+  <div>
+    <p class="eyebrow">Import Details</p>
+    <h1><%= @import.file_name %></h1>
+    <p class="subtitle">Detailed status and processing summary.</p>
+  </div>
 
-<p><b>File Name:</b> <%= @import.file_name %></p>
-<p><b>Status:</b> <%= @import.status %></p>
-<p><b>Progress:</b> <%= @import.progress_text %></p>
-<p><b>Total Rows:</b> <%= @import.total_rows %></p>
-<p><b>Successful Rows:</b> <%= @import.successful_rows %></p>
-<p><b>Failed Rows:</b> <%= @import.failed_rows %></p>
-<p><b>Started At:</b> <%= @import.started_at %></p>
-<p><b>Completed At:</b> <%= @import.completed_at %></p>
+  <%= link_to "Back", imports_path, class: "btn" %>
+</div>
 
-<% if @import.failed_rows.to_i > 0 %>
-  <%= link_to "Download Error Report", error_report_import_path(@import) %>
-<% end %>
+<div class="detail-grid">
+  <div class="card">
+    <h2>Status</h2>
+    <span class="badge large <%= @import.status %>"><%= @import.status %></span>
 
-<br><br>
+    <div class="progress-bar">
+      <% percent = @import.total_rows.to_i.zero? ? 0 : ((@import.processed_rows.to_f / @import.total_rows) * 100).round %>
+      <div style="width: <%= percent %>%"></div>
+    </div>
 
-<%= link_to "Back", imports_path %>
+    <p><%= @import.progress_text %> processed</p>
+  </div>
+
+  <div class="card summary-card">
+    <div>
+      <span>Total Rows</span>
+      <strong><%= @import.total_rows %></strong>
+    </div>
+
+    <div>
+      <span>Successful</span>
+      <strong><%= @import.successful_rows %></strong>
+    </div>
+
+    <div>
+      <span>Failed</span>
+      <strong><%= @import.failed_rows %></strong>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Error Report</h2>
+
+  <% if @import.failed_rows.to_i > 0 %>
+    <p>Some rows failed validation. Download the CSV report to review errors.</p>
+    <%= link_to "Download Error Report", error_report_import_path(@import), class: "btn primary" %>
+  <% else %>
+    <p>No failed rows found.</p>
+  <% end %>
+</div>

@@ -1,23 +1,42 @@
-<h1>Upload CSV File</h1>
-
-<p><b>Required CSV format:</b></p>
-
-<pre>
-email,first_name,last_name,phone
-john@example.com,John,Doe,1234567890
-jane@example.com,Jane,Smith,9876543210
-</pre>
-
-<%= form_with url: imports_path, method: :post, multipart: true do %>
+<div class="page-header">
   <div>
-    <%= file_field_tag :file, accept: ".csv" %>
+    <p class="eyebrow">Upload</p>
+    <h1>New CSV Import</h1>
+    <p class="subtitle">Upload customer CSV files and process records automatically.</p>
   </div>
 
-  <br>
+  <%= link_to "Back", imports_path, class: "btn" %>
+</div>
 
-  <%= submit_tag "Upload CSV" %>
-<% end %>
+<div class="upload-grid">
+  <div class="card upload-card">
+    <h2>Upload CSV File</h2>
+    <p>Select a CSV file with customer records.</p>
 
-<br>
+    <%= form_with url: imports_path, method: :post, multipart: true do %>
+      <label class="file-box">
+        <span>Click to choose CSV file</span>
+        <small>Only .csv format supported</small>
+        <%= file_field_tag :file, accept: ".csv" %>
+      </label>
 
-<%= link_to "Back to Import History", imports_path %>
+      <%= submit_tag "Start Import", class: "btn primary full" %>
+    <% end %>
+  </div>
+
+  <div class="card">
+    <h2>Required Format</h2>
+    <p>Your CSV must contain these columns:</p>
+
+    <div class="columns-list">
+      <span>email</span>
+      <span>first_name</span>
+      <span>last_name</span>
+      <span>phone</span>
+    </div>
+
+    <pre class="code-block">email,first_name,last_name,phone
+john@example.com,John,Doe,1234567890
+jane@example.com,Jane,Smith,9876543210</pre>
+  </div>
+</div>
