@@ -1,0 +1,14 @@
+<h1>Upload CSV</h1>
+
+<p>CSV format:</p>
+
+<pre>
+email,first_name,last_name,phone
+john@example.com,John,Doe,1234567890
+jane@example.com,Jane,Smith,9876543210
+</pre>
+
+<%= form_with url: imports_path, method: :post, multipart: true do %>
+  <%= file_field_tag :file, accept: ".csv" %>
+  <%= submit_tag "Upload CSV" %>
+<% end %>
