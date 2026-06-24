@@ -1,0 +1,91 @@
+<h1>Reporting Dashboard</h1>
+
+<div>
+  <h3>Total Reports Generated</h3>
+  <p><%= @total_reports %></p>
+</div>
+
+<div>
+  <h3>Failed Reports</h3>
+  <p><%= @failed_reports %></p>
+</div>
+
+<div>
+  <h3>Success Rate</h3>
+  <p><%= @success_rate %>%</p>
+</div>
+
+<div>
+  <h3>Average Processing Time</h3>
+  <p><%= @average_processing_time %> seconds</p>
+</div>
+
+<div>
+  <h3>Last Report Run</h3>
+  <% if @last_report.present? %>
+    <p><%= @last_report.report_name %></p>
+    <p><%= @last_report.executed_at.strftime("%b %d, %Y %I:%M %p") %></p>
+  <% else %>
+    <p>No reports found</p>
+  <% end %>
+</div>
+
+<hr>
+
+<h2>Reports Generated Per Day</h2>
+<%= line_chart @reports_per_day %>
+
+<h2>Report Status Distribution</h2>
+<%= pie_chart @status_distribution %>
+
+<h2>Report Types</h2>
+<%= bar_chart @report_types %>
+
+<h2>Average Processing Time Trend</h2>
+<%= line_chart @avg_processing_time_trend %>
+
+<hr>
+
+<h2>Execution History</h2>
+
+<%= form_with url: admin_dashboard_path, method: :get, local: true do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search report name" %>
+
+  <%= select_tag :sort,
+    options_for_select([
+      ["Run Date", "executed_at"],
+      ["Processing Time", "execution_time"],
+      ["Records Processed", "records_processed"]
+    ], params[:sort]) %>
+
+  <%= submit_tag "Search" %>
+<% end %>
+
+<br>
+
+<table border="1" cellpadding="8">
+  <thead>
+    <tr>
+      <th>Report Name</th>
+      <th>Status</th>
+      <th>Records</th>
+      <th>Duration</th>
+      <th>Run Date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @executions.each do |execution| %>
+      <tr>
+        <td><%= execution.report_name %></td>
+        <td><%= execution.status.capitalize %></td>
+        <td><%= execution.records_processed %></td>
+        <td><%= execution.execution_time %>s</td>
+        <td><%= execution.executed_at.strftime("%b %d, %Y %I:%M %p") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= paginate @executions %>
