@@ -77,7 +77,9 @@
   <tbody>
     <% @executions.each do |execution| %>
       <tr>
-        <td><%= execution.report_name %></td>
+        <td>
+          <%= link_to execution.report_name, admin_report_execution_path(execution) %>
+        </td>
         <td><%= execution.status.capitalize %></td>
         <td><%= execution.records_processed %></td>
         <td><%= execution.execution_time %>s</td>
