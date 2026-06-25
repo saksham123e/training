@@ -2,15 +2,13 @@ class Admin::DashboardController < ApplicationController
   def index
     @report_executions = ReportExecution.all
 
-    @total_reports = @report_executions.completed.count
-    @failed_reports = @report_executions.failed.count
+    metrics = DashboardMetricsService.new(@report_executions).call
 
-    total_count = @report_executions.count
-    completed_count = @report_executions.completed.count
-
-    @success_rate = total_count.positive? ? ((completed_count.to_f / total_count) * 100).round(2) : 0
-    @average_processing_time = @report_executions.average(:execution_time).to_f.round(2)
-    @last_report = @report_executions.order(executed_at: :desc).first
+    @total_reports = metrics[:total_reports]
+    @failed_reports = metrics[:failed_reports]
+    @success_rate = metrics[:success_rate]
+    @average_processing_time = metrics[:average_processing_time]
+    @last_report = metrics[:last_report]
 
     @reports_per_day = @report_executions.group_by_day(:executed_at).count
     @status_distribution = @report_executions.group(:status).count
@@ -28,12 +26,10 @@ class Admin::DashboardController < ApplicationController
       @executions = @executions.order(execution_time: :desc)
                                .page(params[:page])
                                .per(10)
-
     when "records_processed"
       @executions = @executions.order(records_processed: :desc)
                                .page(params[:page])
                                .per(10)
-
     else
       @executions = @executions.order(executed_at: :desc)
                                .page(params[:page])
