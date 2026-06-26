@@ -82,16 +82,12 @@
     <tbody>
       <% @executions.each do |execution| %>
         <tr>
-          <td>
-            <%= link_to execution.report_name, admin_report_execution_path(execution) %>
-          </td>
-
+          <td><%= link_to execution.report_name, admin_report_execution_path(execution) %></td>
           <td>
             <span class="badge <%= execution.status %>">
               <%= execution.status.capitalize %>
             </span>
           </td>
-
           <td><%= execution.records_processed %></td>
           <td><%= execution.execution_time %>s</td>
           <td><%= execution.executed_at.strftime("%b %d, %Y %I:%M %p") %></td>
@@ -100,6 +96,5 @@
     </tbody>
   </table>
 
-  <br>
   <%= paginate @executions %>
 </div>
