@@ -1,6 +1,12 @@
 class Admin::DashboardController < ApplicationController
+  require "csv"
+
   def index
     @report_executions = ReportExecution.all
+
+    if params[:status].present?
+      @report_executions = @report_executions.where(status: params[:status])
+    end
 
     metrics = DashboardMetricsService.new(@report_executions).call
 
@@ -21,19 +27,44 @@ class Admin::DashboardController < ApplicationController
       @executions = @executions.where("report_name ILIKE ?", "%#{params[:search]}%")
     end
 
-    case params[:sort]
-    when "execution_time"
-      @executions = @executions.order(execution_time: :desc)
-                               .page(params[:page])
-                               .per(10)
-    when "records_processed"
-      @executions = @executions.order(records_processed: :desc)
-                               .page(params[:page])
-                               .per(10)
-    else
-      @executions = @executions.order(executed_at: :desc)
-                               .page(params[:page])
-                               .per(10)
+    @executions =
+      case params[:sort]
+      when "execution_time"
+        @executions.order(execution_time: :desc)
+      when "records_processed"
+        @executions.order(records_processed: :desc)
+      else
+        @executions.order(executed_at: :desc)
+      end
+
+    respond_to do |format|
+      format.html do
+        @executions = @executions.page(params[:page]).per(10)
+      end
+
+      format.csv do
+        send_data generate_csv(@executions),
+                  filename: "report_executions_#{Date.current}.csv"
+      end
+    end
+  end
+
+  private
+
+  def generate_csv(executions)
+    CSV.generate(headers: true) do |csv|
+      csv << [ "Report Name", "Status", "Records Processed", "Execution Time", "Error Message", "Executed At" ]
+
+      executions.each do |execution|
+        csv << [
+          execution.report_name,
+          execution.status,
+          execution.records_processed,
+          execution.execution_time,
+          execution.error_message,
+          execution.executed_at
+        ]
+      end
     end
   end
 end

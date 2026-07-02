@@ -223,4 +223,53 @@ nav.pagination span {
   select {
     min-width: 100%;
   }
+  .status-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.status-btn,
+.export-btn {
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: #e5e7eb;
+  color: #111827;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.status-btn:hover,
+.export-btn:hover {
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+.completed-btn {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.failed-btn {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.processing-btn {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.pending-btn {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.export-btn {
+  margin-left: auto;
+  background: linear-gradient(135deg, #111827, #4f46e5);
+  color: white;
+}
 }

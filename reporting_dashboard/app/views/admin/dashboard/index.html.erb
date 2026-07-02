@@ -66,6 +66,18 @@
       ], params[:sort]) %>
 
     <%= submit_tag "Search" %>
+
+    <div class="status-buttons">
+      <%= link_to "All", admin_dashboard_path, class: "status-btn" %>
+      <%= link_to "Completed", admin_dashboard_path(status: "completed"), class: "status-btn completed-btn" %>
+      <%= link_to "Failed", admin_dashboard_path(status: "failed"), class: "status-btn failed-btn" %>
+      <%= link_to "Processing", admin_dashboard_path(status: "processing"), class: "status-btn processing-btn" %>
+      <%= link_to "Pending", admin_dashboard_path(status: "pending"), class: "status-btn pending-btn" %>
+
+      <%= link_to "Export CSV",
+          admin_dashboard_path(request.query_parameters.merge(format: :csv)),
+          class: "export-btn" %>
+    </div>
   <% end %>
 
   <table>
