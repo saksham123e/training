@@ -1,12 +1,9 @@
-function Hero(props) {
+function Hero({ name, role, description }) {
   return (
     <section>
-      <h1>Hello, I'm {props.name}</h1>
-
-      <h3>{props.role}</h3>
-
-      <p>{props.description}</p>
-
+      <h1>Hello, I'm {name}</h1>
+      <h3>{role}</h3>
+      <p>{description}</p>
       <button>Contact Me</button>
     </section>
   );

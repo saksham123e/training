@@ -1,9 +1,10 @@
-function StudentCard(props) {
+function StudentCard({ name, course, age }) {
   return (
     <div>
-      <h2>{props.name}</h2>
-      <p>{props.course}</p>
-      <p>{props.age}</p>
+      <h3>{name}</h3>
+      <p>Course: {course}</p>
+      <p>Age: {age}</p>
+      <hr />
     </div>
   );
 }
