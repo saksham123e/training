@@ -1,13 +1,13 @@
-function Hero() {
+function Hero(props) {
   return (
     <section>
-      <h1>Welcome to TechNova</h1>
+      <h1>Hello, I'm {props.name}</h1>
 
-      <p>
-        We build modern web applications using React and Next.js.
-      </p>
+      <h3>{props.role}</h3>
 
-      <button>Get Started</button>
+      <p>{props.description}</p>
+
+      <button>Contact Me</button>
     </section>
   );
 }

@@ -9,7 +9,23 @@ function App() {
   return (
     <>
       <Navbar />
-      <Hero />
+
+      <Hero
+        name="Saksham Arora"
+        role="bussiness man"
+        description=""
+      />
+      <Hero
+        name="Virat Kohli"
+        role="Cricketer"
+        description="One of the greatest batsmen."
+      />
+
+      <Hero
+        name="Elon Musk"
+        role="Entrepreneur"
+        description="CEO of Tesla and SpaceX."
+      />
       <About />
       <Skills />
       <Projects />
