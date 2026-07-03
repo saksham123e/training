@@ -4,6 +4,7 @@ import About from "./components/About";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Footer from "./components/Footer";
+import StudentCard from "./components/StudentCard";
 
 function App() {
   return (
@@ -12,23 +13,36 @@ function App() {
 
       <Hero
         name="Saksham Arora"
-        role="bussiness man"
-        description=""
-      />
-      <Hero
-        name="Virat Kohli"
-        role="Cricketer"
-        description="One of the greatest batsmen."
+        role="Full Stack Developer"
+        description="Currently learning React and Next.js."
       />
 
-      <Hero
-        name="Elon Musk"
-        role="Entrepreneur"
-        description="CEO of Tesla and SpaceX."
-      />
       <About />
+
       <Skills />
+
       <Projects />
+
+      <h2>Student Details</h2>
+
+      <StudentCard
+        name="Saksham Arora"
+        course="B.Tech CSE"
+        age="22"
+      />
+
+      <StudentCard
+        name="Rahul Sharma"
+        course="BCA"
+        age="21"
+      />
+
+      <StudentCard
+        name="Priya Singh"
+        course="MCA"
+        age="23"
+      />
+
       <Footer />
     </>
   );
