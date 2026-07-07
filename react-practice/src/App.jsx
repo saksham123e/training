@@ -7,6 +7,7 @@ import StudentCard from "./components/StudentCard";
 import EmployeeCard from "./components/EmployeeCard";
 import EventDemo from "./components/EventDemo";
 import Footer from "./components/Footer";
+import LoginStatus from "./components/LoginStatus";
 
 function App() {
   return (
@@ -52,6 +53,8 @@ function App() {
         experience="4 Years"
       />
 
+      <LoginStatus />
+      
       <EventDemo />
 
       <Footer />
