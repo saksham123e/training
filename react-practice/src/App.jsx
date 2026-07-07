@@ -8,6 +8,7 @@ import EmployeeCard from "./components/EmployeeCard";
 import EventDemo from "./components/EventDemo";
 import Footer from "./components/Footer";
 import LoginStatus from "./components/LoginStatus";
+import ContactForm from "./components/ContactForm";
 
 function App() {
   return (
@@ -52,9 +53,10 @@ function App() {
         salary="11 LPA"
         experience="4 Years"
       />
+      <ContactForm />
 
       <LoginStatus />
-      
+
       <EventDemo />
 
       <Footer />
