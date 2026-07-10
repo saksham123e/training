@@ -3,12 +3,12 @@ type Food = {
   title: string;
 };
 
-async function getFoods(): Promise<Food[]> {
-  const res = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=5");
+async function getFoods() {
+  await new Promise((resolve) => setTimeout(resolve, 3000));
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch foods");
-  }
+  const res = await fetch(
+    "https://jsonplaceholder.typicode.com/posts?_limit=5"
+  );
 
   return res.json();
 }
