@@ -11,8 +11,11 @@ export async function GET() {
 export async function POST(request: Request) {
   const body = await request.json();
 
+  console.log(body);
+
   return Response.json({
+    success: true,
     message: "Food Added Successfully",
-    data: body,
+    food: body,
   });
 }
