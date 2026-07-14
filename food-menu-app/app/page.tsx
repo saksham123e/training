@@ -1,13 +1,30 @@
-import Counter from "@/components/Counter";
+import Hero from "@/components/Hero";
+import FoodCard from "@/components/FoodCard";
+import { foods } from "@/data/foods";
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center">
-      <h1 className="text-5xl font-bold">
-        🍕 Food Menu App
-      </h1>
+    <main>
+      <Hero />
 
-      <Counter />
+      <section className="mx-auto max-w-7xl px-6 py-20">
+        <h2 className="mb-10 text-center text-4xl font-bold">
+          🔥 Featured Foods
+        </h2>
+
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {foods.map((food) => (
+            <FoodCard
+              key={food.id}
+              id={food.id}
+              name={food.name}
+              price={food.price}
+              rating={food.rating}
+              image={food.image}
+            />
+          ))}
+        </div>
+      </section>
     </main>
   );
 }

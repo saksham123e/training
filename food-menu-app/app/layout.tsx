@@ -1,7 +1,7 @@
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+
 import type { ReactNode } from "react";
+import Navbar from "@/components/navbar";
 
 export default function RootLayout({
   children,
@@ -11,9 +11,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Header />
+        <Navbar />
         {children}
-        <Footer />
+        <Navbar />
       </body>
     </html>
   );
