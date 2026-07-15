@@ -1,7 +1,16 @@
+"use client";
+
+import { useState } from "react";
 import FoodCard from "@/components/FoodCard";
 import { foods } from "@/data/foods";
 
 export default function MenuPage() {
+  const [search, setSearch] = useState("");
+
+  const filteredFoods = foods.filter((food) =>
+    food.name.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <main className="mx-auto max-w-7xl px-6 py-10">
       <h1 className="mb-8 text-center text-5xl font-bold">
@@ -13,6 +22,8 @@ export default function MenuPage() {
         <input
           type="text"
           placeholder="Search food..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
           className="flex-1 rounded-lg border p-3 outline-none focus:ring-2 focus:ring-orange-500"
         />
 
@@ -27,7 +38,7 @@ export default function MenuPage() {
 
       {/* Food Grid */}
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {foods.map((food) => (
+        {filteredFoods.map((food) => (
           <FoodCard
             key={food.id}
             id={food.id}
