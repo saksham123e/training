@@ -1,31 +1,58 @@
-type Food = {
-  id: number;
-  title: string;
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { foods } from "@/data/foods";
+
+type Props = {
+  params: Promise<{
+    id: string;
+  }>;
 };
 
-async function getFoods() {
-  await new Promise((resolve) => setTimeout(resolve, 3000));
+export default async function FoodDetailsPage({ params }: Props) {
+  const { id } = await params;
 
-  const res = await fetch(
-    "https://jsonplaceholder.typicode.com/posts?_limit=5"
-  );
+  const food = foods.find((item) => item.id === Number(id));
 
-  return res.json();
-}
-
-export default async function MenuPage() {
-  const foods = await getFoods();
+  if (!food) {
+    notFound();
+  }
 
   return (
-    <main className="min-h-screen p-8">
-      <h1 className="mb-6 text-4xl font-bold">🍽️ Food Menu</h1>
+    <main className="mx-auto max-w-4xl px-6 py-10">
+      <div className="rounded-xl bg-white p-8 shadow-lg">
+        <img
+          src={food.image}
+          alt={food.name}
+          className="mb-6 h-80 w-full rounded-lg object-cover"
+        />
 
-      <div className="space-y-4">
-        {foods.map((food) => (
-          <div key={food.id} className="rounded-lg border p-4">
-            <h2 className="text-xl font-bold">{food.title}</h2>
-          </div>
-        ))}
+        <h1 className="text-4xl font-bold">
+          {food.name}
+        </h1>
+
+        <p className="mt-4 text-2xl font-semibold text-orange-600">
+          ₹{food.price}
+        </p>
+
+        <p className="mt-2">
+          ⭐ {food.rating}
+        </p>
+
+        <p className="mt-2">
+          Category: {food.category}
+        </p>
+
+        <p className="mt-6 text-gray-600">
+          Freshly prepared with premium ingredients.
+          Perfect for lunch and dinner.
+        </p>
+
+        <Link
+          href="/menu"
+          className="mt-8 inline-block rounded-lg bg-orange-600 px-6 py-3 text-white"
+        >
+          ← Back to Menu
+        </Link>
       </div>
     </main>
   );

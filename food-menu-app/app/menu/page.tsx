@@ -6,10 +6,18 @@ import { foods } from "@/data/foods";
 
 export default function MenuPage() {
   const [search, setSearch] = useState("");
+  const [category, setCategory] = useState("All");
 
-  const filteredFoods = foods.filter((food) =>
-    food.name.toLowerCase().includes(search.toLowerCase())
-  );
+  const filteredFoods = foods.filter((food) => {
+    const matchesSearch = food.name
+      .toLowerCase()
+      .includes(search.toLowerCase());
+
+    const matchesCategory =
+      category === "All" || food.category === category;
+
+    return matchesSearch && matchesCategory;
+  });
 
   return (
     <main className="mx-auto max-w-7xl px-6 py-10">
@@ -17,7 +25,7 @@ export default function MenuPage() {
         🍽 Our Menu
       </h1>
 
-      {/* Search + Filter */}
+      {/* Search + Category Filter */}
       <div className="mb-10 flex flex-col gap-4 md:flex-row">
         <input
           type="text"
@@ -27,28 +35,41 @@ export default function MenuPage() {
           className="flex-1 rounded-lg border p-3 outline-none focus:ring-2 focus:ring-orange-500"
         />
 
-        <select className="rounded-lg border p-3 outline-none focus:ring-2 focus:ring-orange-500">
-          <option>All Categories</option>
-          <option>Pizza</option>
-          <option>Burger</option>
-          <option>Pasta</option>
-          <option>Salad</option>
+        <select
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          className="rounded-lg border p-3 outline-none focus:ring-2 focus:ring-orange-500"
+        >
+          <option value="All">All Categories</option>
+          <option value="Pizza">Pizza</option>
+          <option value="Burger">Burger</option>
+          <option value="Pasta">Pasta</option>
+          <option value="Salad">Salad</option>
         </select>
       </div>
 
       {/* Food Grid */}
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {filteredFoods.map((food) => (
-          <FoodCard
-            key={food.id}
-            id={food.id}
-            name={food.name}
-            price={food.price}
-            rating={food.rating}
-            image={food.image}
-          />
-        ))}
-      </div>
+      {filteredFoods.length > 0 ? (
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {filteredFoods.map((food) => (
+            <FoodCard
+              key={food.id}
+              id={food.id}
+              name={food.name}
+              price={food.price}
+              rating={food.rating}
+              image={food.image}
+            />
+          ))}
+        </div>
+      ) : (
+        <div className="rounded-lg bg-gray-100 p-10 text-center">
+          <h2 className="text-2xl font-bold">😔 No Food Found</h2>
+          <p className="mt-2 text-gray-600">
+            Try searching with another name or category.
+          </p>
+        </div>
+      )}
     </main>
   );
 }

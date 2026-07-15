@@ -4,7 +4,7 @@ export const foods = [
     name: "Margherita Pizza",
     price: 299,
     rating: 4.8,
-    image: "/pizza.jpg",
+    image: "/foods/pizza.jpg",
     category: "Pizza",
   },
   {
@@ -12,7 +12,23 @@ export const foods = [
     name: "Veg Burger",
     price: 199,
     rating: 4.5,
-    image: "/burger.jpg",
+    image: "/foods/burger.jpg",
     category: "Burger",
+  },
+  {
+    id: 3,
+    name: "White Pasta",
+    price: 249,
+    rating: 4.6,
+    image: "/foods/pasta.jpg",
+    category: "Pasta",
+  },
+  {
+    id: 4,
+    name: "Greek Salad",
+    price: 149,
+    rating: 4.4,
+    image: "/foods/salad.jpg",
+    category: "Salad",
   },
 ];
