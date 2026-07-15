@@ -1,23 +1,18 @@
 export const foods = [
   {
     id: 1,
-    name: "Paneer Pizza",
-    price: 250,
+    name: "Margherita Pizza",
+    price: 299,
     rating: 4.8,
-    image: "/foods/pizza.jpg",
+    image: "/pizza.jpg",
+    category: "Pizza",
   },
   {
     id: 2,
     name: "Veg Burger",
-    price: 120,
-    rating: 4.6,
-    image: "/foods/burger.jpg",
-  },
-  {
-    id: 3,
-    name: "Pasta",
-    price: 180,
-    rating: 4.7,
-    image: "/foods/pasta.jpg",
+    price: 199,
+    rating: 4.5,
+    image: "/burger.jpg",
+    category: "Burger",
   },
 ];

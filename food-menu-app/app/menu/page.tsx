@@ -1,34 +1,41 @@
-import Link from "next/link";
+import FoodCard from "@/components/FoodCard";
+import { foods } from "@/data/foods";
 
 export default function MenuPage() {
-  const foods = [
-    { id: 1, name: "Paneer Pizza", price: 250 },
-    { id: 2, name: "Veg Burger", price: 120 },
-    { id: 3, name: "Masala Dosa", price: 100 },
-  ];
-
   return (
-    <main className="min-h-screen p-8">
-      <h1 className="mb-6 text-4xl font-bold">🍽️ Our Menu</h1>
+    <main className="mx-auto max-w-7xl px-6 py-10">
+      <h1 className="mb-8 text-center text-5xl font-bold">
+        🍽 Our Menu
+      </h1>
 
-      <div className="space-y-4">
+      {/* Search + Filter */}
+      <div className="mb-10 flex flex-col gap-4 md:flex-row">
+        <input
+          type="text"
+          placeholder="Search food..."
+          className="flex-1 rounded-lg border p-3 outline-none focus:ring-2 focus:ring-orange-500"
+        />
+
+        <select className="rounded-lg border p-3 outline-none focus:ring-2 focus:ring-orange-500">
+          <option>All Categories</option>
+          <option>Pizza</option>
+          <option>Burger</option>
+          <option>Pasta</option>
+          <option>Salad</option>
+        </select>
+      </div>
+
+      {/* Food Grid */}
+      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {foods.map((food) => (
-          <div
+          <FoodCard
             key={food.id}
-            className="flex items-center justify-between rounded-lg border p-4"
-          >
-            <div>
-              <h2 className="text-xl font-semibold">{food.name}</h2>
-              <p>₹{food.price}</p>
-            </div>
-
-            <Link
-              href={`/menu/${food.id}`}
-              className="rounded bg-orange-600 px-4 py-2 text-white"
-            >
-              View Details
-            </Link>
-          </div>
+            id={food.id}
+            name={food.name}
+            price={food.price}
+            rating={food.rating}
+            image={food.image}
+          />
         ))}
       </div>
     </main>
