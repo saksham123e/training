@@ -1,57 +1,27 @@
-"use client";
-
-import { useState } from "react";
+import Hero from "@/components/Hero";
 import FoodCard from "@/components/FoodCard";
-import { foods } from "@/data/foods";
+import CategoryCard from "@/components/CategoryCard";
 
-export default function MenuPage() {
-  const [search, setSearch] = useState("");
-  const [category, setCategory] = useState("All");
+import { prisma } from "@/lib/prisma";
+import { categories } from "@/lib/categories";
 
-  const filteredFoods = foods.filter((food) => {
-    const matchesSearch = food.name
-      .toLowerCase()
-      .includes(search.toLowerCase());
-
-    const matchesCategory =
-      category === "All" || food.category === category;
-
-    return matchesSearch && matchesCategory;
+export default async function Home() {
+  const foods = await prisma.food.findMany({
+    take: 6,
   });
 
   return (
-    <main className="mx-auto max-w-7xl px-6 py-10">
-      <h1 className="mb-8 text-center text-5xl font-bold">
-        🍽 Our Menu
-      </h1>
+    <main>
+      <Hero />
 
-      {/* Search + Category Filter */}
-      <div className="mb-10 flex flex-col gap-4 md:flex-row">
-        <input
-          type="text"
-          placeholder="Search food..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="flex-1 rounded-lg border p-3 outline-none focus:ring-2 focus:ring-orange-500"
-        />
+      {/* Featured Foods */}
+      <section className="mx-auto max-w-7xl px-6 py-20">
+        <h2 className="mb-10 text-center text-4xl font-bold">
+          🔥 Featured Foods
+        </h2>
 
-        <select
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-          className="rounded-lg border p-3 outline-none focus:ring-2 focus:ring-orange-500"
-        >
-          <option value="All">All Categories</option>
-          <option value="Pizza">Pizza</option>
-          <option value="Burger">Burger</option>
-          <option value="Pasta">Pasta</option>
-          <option value="Salad">Salad</option>
-        </select>
-      </div>
-
-      {/* Food Grid */}
-      {filteredFoods.length > 0 ? (
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {filteredFoods.map((food) => (
+          {foods.map((food) => (
             <FoodCard
               key={food.id}
               id={food.id}
@@ -62,14 +32,24 @@ export default function MenuPage() {
             />
           ))}
         </div>
-      ) : (
-        <div className="rounded-lg bg-gray-100 p-10 text-center">
-          <h2 className="text-2xl font-bold">😔 No Food Found</h2>
-          <p className="mt-2 text-gray-600">
-            Try searching with another name or category.
-          </p>
+      </section>
+
+      {/* Categories */}
+      <section className="mx-auto max-w-7xl px-6 py-20">
+        <h2 className="mb-10 text-center text-4xl font-bold">
+          🍽 Browse Categories
+        </h2>
+
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {categories.map((category) => (
+            <CategoryCard
+              key={category.name}
+              name={category.name}
+              emoji={category.emoji}
+            />
+          ))}
         </div>
-      )}
+      </section>
     </main>
   );
 }

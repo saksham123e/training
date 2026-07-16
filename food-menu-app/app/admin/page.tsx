@@ -1,56 +1,74 @@
 import Link from "next/link";
-import { foods } from "@/data/foods";
+import { prisma } from "@/lib/prisma";
+import DeleteFoodButton from "@/components/DeleteFoodButton";
 
-export default function AdminPage() {
+export default async function AdminPage() {
+  const foods = await prisma.food.findMany({
+    orderBy: {
+      id: "desc",
+    },
+  });
+
   return (
-    <main className="mx-auto max-w-7xl px-6 py-10">
+    <main className="mx-auto max-w-6xl px-6 py-10">
       <div className="mb-8 flex items-center justify-between">
         <h1 className="text-4xl font-bold">
-          👨‍🍳 Admin Dashboard
+          🍔 Admin Dashboard
         </h1>
 
         <Link
           href="/admin/add-food"
-          className="rounded-lg bg-orange-600 px-5 py-3 text-white hover:bg-orange-700"
+          className="rounded bg-orange-500 px-5 py-3 text-white hover:bg-orange-600"
         >
           + Add Food
         </Link>
       </div>
 
-      <div className="overflow-hidden rounded-lg border">
-        <table className="w-full">
-          <thead className="bg-orange-100">
-            <tr>
-              <th className="p-4 text-left">Food</th>
-              <th className="p-4 text-left">Category</th>
-              <th className="p-4 text-left">Price</th>
-              <th className="p-4 text-left">Rating</th>
-              <th className="p-4 text-center">Actions</th>
+      <table className="w-full border-collapse rounded-lg overflow-hidden shadow">
+        <thead className="bg-orange-500 text-white">
+          <tr>
+            <th className="p-4 text-left">Name</th>
+            <th className="p-4">Price</th>
+            <th className="p-4">Category</th>
+            <th className="p-4">Rating</th>
+            <th className="p-4">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {foods.map((food) => (
+            <tr
+              key={food.id}
+              className="border-b hover:bg-gray-50"
+            >
+              <td className="p-4">{food.name}</td>
+
+              <td className="text-center">
+                ₹{food.price}
+              </td>
+
+              <td className="text-center">
+                {food.category}
+              </td>
+
+              <td className="text-center">
+                ⭐ {food.rating}
+              </td>
+
+              <td className="text-center space-x-3">
+                <Link
+                  href={`/admin/edit/${food.id}`}
+                  className="rounded bg-blue-500 px-3 py-2 text-white hover:bg-blue-600"
+                >
+                  Edit
+                </Link>
+
+                <DeleteFoodButton id={food.id} />
+              </td>
             </tr>
-          </thead>
-
-          <tbody>
-            {foods.map((food) => (
-              <tr key={food.id} className="border-t">
-                <td className="p-4">{food.name}</td>
-                <td className="p-4">{food.category}</td>
-                <td className="p-4">₹{food.price}</td>
-                <td className="p-4">⭐ {food.rating}</td>
-
-                <td className="p-4 text-center">
-                  <button className="mr-3 rounded bg-blue-500 px-3 py-2 text-white hover:bg-blue-600">
-                    Edit
-                  </button>
-
-                  <button className="rounded bg-red-500 px-3 py-2 text-white hover:bg-red-600">
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+          ))}
+        </tbody>
+      </table>
     </main>
   );
 }

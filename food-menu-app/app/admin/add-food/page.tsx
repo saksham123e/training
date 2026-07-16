@@ -11,6 +11,8 @@ export default function AddFoodPage() {
     rating: "",
   });
 
+  const [loading, setLoading] = useState(false);
+
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) {
@@ -23,33 +25,48 @@ export default function AddFoodPage() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
-    const response = await fetch("/api/foods", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
+    setLoading(true);
 
-    const data = await response.json();
+    try {
+      const response = await fetch("/api/foods", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          price: Number(formData.price),
+          category: formData.category,
+          image: formData.image,
+          rating: Number(formData.rating),
+        }),
+      });
 
-    console.log(data);
+      if (!response.ok) {
+        throw new Error("Failed to add food");
+      }
 
-    alert("Food Added Successfully!");
+      alert("✅ Food Added Successfully!");
 
-    setFormData({
-      name: "",
-      price: "",
-      category: "Pizza",
-      image: "",
-      rating: "",
-    });
+      setFormData({
+        name: "",
+        price: "",
+        category: "Pizza",
+        image: "",
+        rating: "",
+      });
+    } catch (error) {
+      console.error(error);
+      alert("❌ Something went wrong!");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
     <main className="mx-auto max-w-xl px-6 py-10">
       <h1 className="mb-8 text-4xl font-bold">
-        ➕ Add New Food
+        ➕ Add Food
       </h1>
 
       <form
@@ -57,21 +74,23 @@ export default function AddFoodPage() {
         className="space-y-5 rounded-xl bg-white p-6 shadow"
       >
         <input
-          name="name"
           type="text"
+          name="name"
           placeholder="Food Name"
           value={formData.name}
           onChange={handleChange}
           className="w-full rounded border p-3"
+          required
         />
 
         <input
-          name="price"
           type="number"
+          name="price"
           placeholder="Price"
           value={formData.price}
           onChange={handleChange}
           className="w-full rounded border p-3"
+          required
         />
 
         <select
@@ -87,29 +106,32 @@ export default function AddFoodPage() {
         </select>
 
         <input
-          name="image"
           type="text"
-          placeholder="Image URL"
+          name="image"
+          placeholder="/foods/pizza.jpg"
           value={formData.image}
           onChange={handleChange}
           className="w-full rounded border p-3"
+          required
         />
 
         <input
-          name="rating"
           type="number"
           step="0.1"
+          name="rating"
           placeholder="Rating"
           value={formData.rating}
           onChange={handleChange}
           className="w-full rounded border p-3"
+          required
         />
 
         <button
           type="submit"
-          className="w-full rounded bg-orange-600 py-3 text-white hover:bg-orange-700"
+          disabled={loading}
+          className="w-full rounded bg-orange-500 py-3 text-white hover:bg-orange-600 disabled:bg-gray-400"
         >
-          Add Food
+          {loading ? "Adding..." : "Add Food"}
         </button>
       </form>
     </main>
