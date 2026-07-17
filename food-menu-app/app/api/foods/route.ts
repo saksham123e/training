@@ -1,14 +1,12 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
+import { parseFoodInput } from "@/lib/food-input";
+import { createFood, getFoods } from "@/lib/foods";
 
-// GET ALL FOODS
+export const runtime = "nodejs";
+
 export async function GET() {
   try {
-    const foods = await prisma.food.findMany({
-      orderBy: {
-        id: "desc",
-      },
-    });
+    const foods = await getFoods();
 
     return NextResponse.json(foods);
   } catch (error) {
@@ -25,20 +23,23 @@ export async function GET() {
   }
 }
 
-// ADD NEW FOOD
 export async function POST(request: Request) {
   try {
     const body = await request.json();
+    const parsed = parseFoodInput(body);
 
-    const food = await prisma.food.create({
-      data: {
-        name: body.name,
-        price: Number(body.price),
-        category: body.category,
-        image: body.image,
-        rating: Number(body.rating),
-      },
-    });
+    if (!parsed.ok) {
+      return NextResponse.json(
+        {
+          message: parsed.error,
+        },
+        {
+          status: 400,
+        }
+      );
+    }
+
+    const food = await createFood(parsed.data);
 
     return NextResponse.json(food, {
       status: 201,

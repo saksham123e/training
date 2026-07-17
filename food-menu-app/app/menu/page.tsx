@@ -1,55 +1,38 @@
-import Hero from "@/components/Hero";
-import FoodCard from "@/components/FoodCard";
-import CategoryCard from "@/components/CategoryCard";
-
-import { prisma } from "@/lib/prisma";
+import MenuBrowser from "@/components/MenuBrowser";
 import { categories } from "@/lib/categories";
 
-export default async function Home() {
-  const foods = await prisma.food.findMany({
-    take: 6,
-  });
+type MenuPageProps = {
+  searchParams: Promise<{
+    category?: string | string[];
+  }>;
+};
+
+function getInitialCategory(category: string | string[] | undefined) {
+  const value = Array.isArray(category) ? category[0] : category;
+
+  if (!value) {
+    return "All";
+  }
 
   return (
-    <main>
-      <Hero />
+    categories.find(
+      (item) => item.name.toLowerCase() === value.toLowerCase()
+    )?.name ?? "All"
+  );
+}
 
-      {/* Featured Foods */}
-      <section className="mx-auto max-w-7xl px-6 py-20">
-        <h2 className="mb-10 text-center text-4xl font-bold">
-          🔥 Featured Foods
-        </h2>
+export default async function MenuPage({ searchParams }: MenuPageProps) {
+  const { category } = await searchParams;
+  const categoryNames = categories.map((item) => item.name);
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {foods.map((food) => (
-            <FoodCard
-              key={food.id}
-              id={food.id}
-              name={food.name}
-              price={food.price}
-              rating={food.rating}
-              image={food.image}
-            />
-          ))}
-        </div>
-      </section>
-
-      {/* Categories */}
-      <section className="mx-auto max-w-7xl px-6 py-20">
-        <h2 className="mb-10 text-center text-4xl font-bold">
-          🍽 Browse Categories
-        </h2>
-
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {categories.map((category) => (
-            <CategoryCard
-              key={category.name}
-              name={category.name}
-              emoji={category.emoji}
-            />
-          ))}
-        </div>
-      </section>
+  return (
+    <main className="bg-[#0B0B0C] px-6 py-10">
+      <div className="mx-auto max-w-7xl">
+        <MenuBrowser
+          categories={categoryNames}
+          initialCategory={getInitialCategory(category)}
+        />
+      </div>
     </main>
   );
 }

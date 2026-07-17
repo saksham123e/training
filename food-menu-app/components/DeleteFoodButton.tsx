@@ -1,5 +1,6 @@
 "use client";
 
+import { Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 type Props = {
@@ -25,20 +26,22 @@ export default function DeleteFoodButton({ id }: Props) {
         throw new Error("Failed to delete");
       }
 
-      alert("✅ Food Deleted Successfully!");
+      alert("Food deleted successfully.");
 
       router.refresh();
     } catch (error) {
       console.error(error);
-      alert("❌ Failed to delete food.");
+      alert("Failed to delete food.");
     }
   }
 
   return (
     <button
+      type="button"
       onClick={handleDelete}
-      className="rounded bg-red-500 px-3 py-2 text-white hover:bg-red-600"
+      className="inline-flex items-center justify-center gap-2 rounded-full border border-[#FF4D4F]/30 bg-[#FF4D4F]/10 px-4 py-2 text-sm font-semibold text-[#ff8587] transition duration-300 hover:scale-105 hover:border-[#FF4D4F]/50 hover:bg-[#FF4D4F]/18 active:scale-95"
     >
+      <Trash2 aria-hidden="true" size={15} />
       Delete
     </button>
   );
